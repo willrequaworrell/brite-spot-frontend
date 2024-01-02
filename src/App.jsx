@@ -1,12 +1,18 @@
+import { Route, Routes } from "react-router-dom"
 
+import Auth from "./Components/Auth"
+import Home from "./Components/Home"
 
 function App() {
 
-  return (
-    <>
-      <h1 className='bg-red-400'>BriteSpot</h1>
-    </>
-  )
+	return (
+		<>
+			<Routes>
+				<Route path="/" element={<Home/>}/>
+				<Route path="/auth" element={<Auth/>}/>
+			</Routes>
+		</>
+	)
 }
 
 export default App
