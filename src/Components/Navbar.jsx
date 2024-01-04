@@ -34,18 +34,21 @@ const Navbar = () => {
                     
                 </div>
                 <div className="flex mx-8 items-center">
-                    <Link to={"/auth"} className="mx-8">
+                    <Link to={"/"} className="mr-12">
+                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">Home</h2>
+                    </Link>
+                    <Link to={"/history"} className="mr-12">
                         <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
                             History
                         </h2>
                     </Link>
-                    <Link to={"/auth"}>
+                    <Link to={"/auth"} className="mr-12">
                         <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
                             Visualize
                         </h2>
                     </Link>
                     <div onClick={toggleShowUserMenu} className="">
-                        <IconContext.Provider value={{className: "flex rounded-full text-4xl ml-8 cursor-pointer hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500"}}>
+                        <IconContext.Provider value={{className: "flex rounded-full text-4xl cursor-pointer hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500"}}>
                             <TbUserHexagon />
                         </IconContext.Provider>
                     </div>

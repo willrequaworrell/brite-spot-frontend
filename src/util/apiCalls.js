@@ -6,8 +6,8 @@ export const fetchAllUserEntries = async (userId) => {
     try {
         
         
-        const response = await axios.get('http://localhost:3000/user/userId/entries', {headers: apiKeyHeader})
-        console.log(response.data.entries)
+        const response = await axios.get(`http://localhost:3000/user/${userId}/entries`, {headers: apiKeyHeader})
+        // console.log(response.data.entries)
         return response.data.entries
     }
     catch (e) {
