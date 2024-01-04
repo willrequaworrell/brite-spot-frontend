@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <> 
-        <div className="w-full bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-1 shadow-xl">
+        <div className="w-full bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-[3px] shadow-xl">
             <div className="relative flex h-full w-full items-center bg-white ">
                 {showUserMenu && 
                     <div className="absolute flex justify-center items-center right-0 top-full px-8 py-4 bg-red-400">
@@ -35,13 +35,17 @@ const Navbar = () => {
                 </div>
                 <div className="flex mx-8 items-center">
                     <Link to={"/auth"} className="mx-8">
-                        <h2 className="text-lg">History</h2>
+                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
+                            History
+                        </h2>
                     </Link>
                     <Link to={"/auth"}>
-                        <h2 className="text-lg">Word Map</h2>
+                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
+                            Visualize
+                        </h2>
                     </Link>
-                    <div onClick={toggleShowUserMenu}>
-                        <IconContext.Provider value={{className: "flex text-4xl ml-8 "}}>
+                    <div onClick={toggleShowUserMenu} className="">
+                        <IconContext.Provider value={{className: "flex rounded-full text-4xl ml-8 cursor-pointer hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500"}}>
                             <TbUserHexagon />
                         </IconContext.Provider>
                     </div>
