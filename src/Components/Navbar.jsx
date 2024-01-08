@@ -29,7 +29,7 @@ const Navbar = () => {
                     {/* <IconContext.Provider value={{className: "text-4xl mx-2"}}>
                         <FiSun />
                     </IconContext.Provider> */}
-                    <img src="/public/sun.png" alt="logo" className="h-16" />
+                    <img src="/logo2.png" alt="logo" className="h-24 -m-4" />
                     <h1 className="text-4xl ">BriteSpot</h1>
                     
                 </div>
