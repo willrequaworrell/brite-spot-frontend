@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useForm } from "react-hook-form";
 
 const Auth = () => {
+	const { register, handleSubmit, watch, formState: { errors } } = useForm();
+	const onSubmit = data => console.log(data);
 	const [authModeToggle, setAuthModeToggle] = useState("Sign Up")
 
 	const toggleAuthMode = () => {
@@ -10,6 +13,8 @@ const Auth = () => {
 			setAuthModeToggle("Sign Up")
 		}
 	}
+
+	console.log(watch("example"))
 
 	return (
 		<div className="h-full w-full flex-col justify-center items-center">
@@ -23,6 +28,20 @@ const Auth = () => {
 						<div className="flex justify-center m-2">
 							<h2 className="text-2xl">{authModeToggle}</h2>
 						</div>
+						<form onSubmit={handleSubmit(onSubmit)} className="flex-col">
+							{/* register your input into the hook by invoking the "register" function */}
+							<p>Email</p>
+							<input {...register("email", { required: true })} />
+							
+							<p>Password</p>
+							{/* include validation with required or other standard HTML validation rules */}
+							<input {...register("password", { required: true })} />
+							{/* errors will return when field validation fails  */}
+							{errors.exampleRequired && <span>This field is required</span>}
+							
+							<input type="submit" />
+							
+						</form>
 						<div className="flex justify-center m-2" onClick={toggleAuthMode}>
 							{authModeToggle === "Sign Up" ? (
 								<p>Already have an account?</p>
