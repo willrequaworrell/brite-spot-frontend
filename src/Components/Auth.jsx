@@ -14,7 +14,8 @@ const Auth = () => {
 		}
 	}
 
-	console.log(watch("example"))
+	console.log(watch("email"))
+	console.log(watch("password"))
 
 	return (
 		<div className="h-full w-full flex-col justify-center items-center">
@@ -28,25 +29,32 @@ const Auth = () => {
 						<div className="flex justify-center m-2">
 							<h2 className="text-2xl">{authModeToggle}</h2>
 						</div>
-						<form onSubmit={handleSubmit(onSubmit)} className="flex-col">
+						<form onSubmit={handleSubmit(onSubmit)} className="flex-col items-center w-full">
 							{/* register your input into the hook by invoking the "register" function */}
-							<p>Email</p>
-							<input {...register("email", { required: true })} />
-							
-							<p>Password</p>
-							{/* include validation with required or other standard HTML validation rules */}
-							<input {...register("password", { required: true })} />
+							<div className="">
+								<div className="m-4 flex-col text-center">
+									<p className="">Email</p>
+									<input {...register("email", { required: true })} className="p-1 border-2 border-black rounded-lg"/>
+								</div>
+								<div className="m-4 text-center">
+									<p>Password</p>
+									<input {...register("password", { required: true })} className="p-1 border-2 border-black rounded-lg" />
+								</div>
+
+							</div>
 							{/* errors will return when field validation fails  */}
 							{errors.exampleRequired && <span>This field is required</span>}
-							
-							<input type="submit" />
+							<div className="flex justify-center ">
+								<input type="submit" className="cursor-pointer" />
+
+							</div>
 							
 						</form>
 						<div className="flex justify-center m-2" onClick={toggleAuthMode}>
 							{authModeToggle === "Sign Up" ? (
-								<p>Already have an account?</p>
+								<p className="text-xs cursor-pointer hover:border-b hover:border-black">Already have an account?</p>
 							) : (
-								<p>Don't have an account yet?</p>
+								<p className="text-xs cursor-pointer hover:border-b hover:border-black">Don't have an account yet?</p>
 							)}
 						</div>
 					</div>
