@@ -12,6 +12,20 @@ export const createUser = async (userData) => {
     }
 }
 
+export const signInUser = async (credentials) => {
+    const editedCredentials = {
+        "email": credentials.email,
+        "password": credentials.password
+    }
+    try {
+        console.log("signing in", editedCredentials)
+        const response = await axios.post(`http://localhost:3000/login`, editedCredentials , {headers: apiKeyHeader} )
+        console.log(response)
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 
 export const fetchAllUserEntries = async (userId) => {
     try {

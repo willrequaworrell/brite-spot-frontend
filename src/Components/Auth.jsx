@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useForm } from "react-hook-form";
 import CustomButton from "./CustomButton";
 
-import { createUser} from "../util/apiCalls";
+import { createUser, signInUser} from "../util/apiCalls";
 
 const Auth = () => {
 	const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
@@ -10,7 +10,12 @@ const Auth = () => {
 
 	const onSubmit = (data) => {
 		console.log(data)
-		createUser(data)
+		if (authModeToggle === "Sign Up") {
+			console.log("first")
+			createUser(data)
+		} else {
+			signInUser(data)
+		}
 		reset({ 
             email: "",   
             password: "",
@@ -29,7 +34,7 @@ const Auth = () => {
 	// console.log(watch("email"))
 	// console.log(watch("password"))
 
-
+	console.log(authModeToggle)
 	return (
 		<div className="h-full w-full flex-col justify-center items-center">
 			<div className="flex justify-center items-center">
