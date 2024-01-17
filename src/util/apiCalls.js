@@ -20,9 +20,9 @@ export const signInUser = async (credentials) => {
     try {
         console.log("signing in", editedCredentials)
         const response = await axios.post(`http://localhost:3000/login`, editedCredentials , {headers: apiKeyHeader} )
-        console.log(response)
+        return {status: "success", userData: response}
     } catch (e) {
-        console.log(e)
+        return {status: "error", errorData: e}
     }
 }
 
