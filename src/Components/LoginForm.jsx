@@ -41,13 +41,13 @@ const LoginForm = () => {
 			<div className="m-4 flex-col text-center">
 				<p className="">Email</p>
 				<input {...register("email", { required: true })} className="p-1 border-2 border-black rounded-lg"/>
-				{/* {errors.email && <p className="text-xs text-red-500">Please enter a valid email</p>} */}
+				{errors.email && <p className="text-xs text-red-500">Please enter a valid email</p>}
 			</div>
 			<div className="m-4 text-center">
 				<p>Password</p>
 				<input {...register("password", { required: true })} type="password" className="p-1 border-2 border-black rounded-lg" />
 				{showError && <p className="mt-2 text-xs text-red-500">Invalid Credentials</p> }
-				{/* {errors.password && <p className="text-xs text-red-500">Password must include 8 characters, at least 1 number, and at least 1 special character</p>} */}
+				{errors.password && <p className="text-xs text-red-500">Password must include 8 characters, at least 1 number, and at least 1 special character</p>}
 			</div>
 
 		</div>
