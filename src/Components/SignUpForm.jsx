@@ -1,20 +1,27 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-import { createUser, signInUser } from "../util/apiCalls";
+import { createUser } from "../util/apiCalls";
+
+import Spinner from "./Spinner";
 
 const SignUpForm = () => {
 	const navigate = useNavigate()
 	const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
 
+	const [loading, setLoading] = useState(false)
+
 
 	const onSubmit = async (data) => {
+		setLoading(true)
 		reset({ 
             email: "",   
             password: "",
             first_name: ""
         });
 		const response = await createUser(data)
+		setLoading(false)
 		console.log("Sign Up Status: ", response.status)
 		if (response.status === "success") {
 			navigate("/")
@@ -46,8 +53,12 @@ const SignUpForm = () => {
 		</div>
 		
 		<div className="flex justify-center">
-			<div className="w-1/4 text-center border-4 border-black rounded-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500">
-			<input type="submit" className="cursor-pointer" />
+			<div className={`flex justify-center items-center w-1/4 p-1 text-center rounded-lg ${!loading && "border-4 border-black hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500" }`}>
+				{loading ? (
+					<Spinner/>
+				) : (
+					<input type="submit" className="cursor-pointer" disabled={loading} />
+				)}
 			</div>
 
 		</div>
