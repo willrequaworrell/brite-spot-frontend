@@ -9,9 +9,16 @@ const SignUpForm = () => {
 
 
 	const onSubmit = async (data) => {
+		reset({ 
+            email: "",   
+            password: "",
+            first_name: ""
+        });
 		const response = await createUser(data)
 		console.log("Sign Up Status: ", response.status)
-		return response.status === "success"  // return true if successful
+		if (response.status === "success") {
+			navigate("/")
+		}
 	}
 
 	console.log(watch("password"))

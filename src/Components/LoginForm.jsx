@@ -9,6 +9,10 @@ const LoginForm = () => {
 
 
 	const onSubmit = async (credentials) => {
+		reset({ 
+            email: "",   
+            password: "",
+        });
 		const response = await signInUser(credentials)
 		console.log("Login Status: ", response.status)
 		if (response.status === "success") {
