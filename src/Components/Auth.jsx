@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import CustomButton from "./CustomButton";
 
 import { createUser, signInUser} from "../util/apiCalls";
+import SignUpForm from "./SignUpForm";
+import LoginForm from "./LoginForm";
 
 const Auth = () => {
 	const navigate = useNavigate()
@@ -59,8 +61,12 @@ const Auth = () => {
 							<h2 className="text-2xl m-2">{authModeToggle}</h2>
 							<div className="h-1 w-full bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500"></div>
 						</div>
-						<form onSubmit={handleSubmit(onSubmit)} className="flex-col items-center w-full">
-							{/* register your input into the hook by invoking the "register" function */}
+						{authModeToggle === "Sign Up" ? (
+							<SignUpForm/>
+						) : (
+							<LoginForm />
+						)}
+						{/* <form onSubmit={handleSubmit(onSubmit)} className="flex-col items-center w-full">
 							<div className="">
 								{authModeToggle === "Sign Up" && (
 									<div className="m-4 flex-col text-center">
@@ -90,7 +96,7 @@ const Auth = () => {
 							</div>
 							
 							
-						</form>
+						</form> */}
 						<div className="flex justify-center m-2" onClick={toggleAuthMode}>
 							{authModeToggle === "Sign Up" ? (
 								<p className="text-xs cursor-pointer hover:border-b hover:border-black">Already have an account?</p>

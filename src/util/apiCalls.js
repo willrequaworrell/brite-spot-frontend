@@ -7,8 +7,9 @@ export const createUser = async (userData) => {
         console.log("submitting", userData)
         const response = await axios.post(`http://localhost:3000/signup`, userData , {headers: apiKeyHeader} )
         console.log(response)
+        return {status: "success", userData: response}
     } catch (e) {
-        console.log(e)
+        return {status: "error", errorData: e}
     }
 }
 
