@@ -27,6 +27,14 @@ export const signInUser = async (credentials) => {
     }
 }
 
+export const fetchUserDetails = async (userId) => {
+    try {
+        const response = await axios.get(`http://localhost:3000/user/${userId}`, {headers: apiKeyHeader})
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export const fetchAllUserEntries = async (userId) => {
     try {
