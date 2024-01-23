@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Audio } from "react-loader-spinner";
 
+import { useAuth } from "../Context/AuthContext";
 import { signInUser } from "../util/apiCalls";
+
 import { useState } from "react";
 import Spinner from "./Spinner";
 
@@ -11,6 +12,7 @@ import Spinner from "./Spinner";
 const LoginForm = () => {
 	const navigate = useNavigate()
 	const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+	const { currentUser, login, logout } = useAuth();
 
 	const [showError, setShowError] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -26,8 +28,10 @@ const LoginForm = () => {
         });
 		const response = await signInUser(credentials)
 		setLoading(false)
+		console.log(response)
 		console.log("Login Status: ", response.status)
 		if (response.status === "success") {
+			// login()
 			navigate("/")
 		} else {
 			setShowError(true)
