@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 
 export const setTokenCookie = (token) => {
-    console.log("cookie")
+    // console.log("cookie")
     Cookies.set('jwt', token);
 };
 

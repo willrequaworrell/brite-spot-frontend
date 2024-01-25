@@ -9,14 +9,13 @@ export const AuthProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null)
 
     const login = (token) => {
-      // Perform any necessary authentication logic
-      console.log(token)
+      // console.log(token)
       const decodedToken = jwtDecode(token)
+      console.log("decoded: ", decodedToken)
       setCurrentUser(decodedToken.userId);
     };
   
     const logout = () => {
-      // Perform any necessary logout logic
       removeTokenCookie()
       setCurrentUser(null);
     };

@@ -12,13 +12,14 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     // Fetch additional user details when currentUser changes (e.g., on login)
-    console.log("\n\n\n\nfirst\n\n\n\n")
+    
     const fetchWrapper = async (userId) => {
-        return await fetchUserDetails(userId)
+        const response = await fetchUserDetails(userId)
+        return response
     }
     if (currentUser) {
         const response = fetchWrapper(currentUser)
-        console.log(response)
+        console.log("fetchWrapper", response)
       // Make a request to fetch user details using currentUser.userId
       // Update setUserDetails with the fetched data
     }

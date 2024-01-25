@@ -5,6 +5,7 @@ import { UserProvider } from "./Context/UserContext"
 import Auth from "./Components/Auth"
 import Home from "./Components/Home"
 import AllUserEntries from "./Components/AllUserEntries"
+import ProtectedRoute from "./Components/ProtectedRoute"
 
 function App() {
 
@@ -13,9 +14,11 @@ function App() {
 			<AuthProvider>
 				<UserProvider>
 					<Routes>
-						<Route path="/" element={<Home/>}/>
 						<Route path="/auth" element={<Auth/>}/>
-						<Route path="/history" element={<AllUserEntries/>}/>
+						<Route element={<ProtectedRoute/>}>
+							<Route path="/" element={<Home/>}/>
+							<Route path="/history" element={<AllUserEntries/>}/>
+						</Route>
 					</Routes>
 				</UserProvider>
 			</AuthProvider>
