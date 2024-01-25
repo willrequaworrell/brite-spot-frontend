@@ -1,4 +1,5 @@
 import axios from "axios"
+import { setTokenCookie } from "./cookieHelper"
 
 const apiKeyHeader = {"x-api-key": import.meta.env.VITE_API_KEY}
 
@@ -21,7 +22,8 @@ export const signInUser = async (credentials) => {
     try {
         console.log("signing in", editedCredentials)
         const response = await axios.post(`http://localhost:3000/login`, editedCredentials , {headers: apiKeyHeader} )
-        return {status: "success", userData: response}
+        setTokenCookie(response.data.jwt)
+        return {status: "success", userData: response.data}
     } catch (e) {
         return {status: "error", errorData: e}
     }

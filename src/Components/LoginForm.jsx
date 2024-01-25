@@ -28,10 +28,10 @@ const LoginForm = () => {
         });
 		const response = await signInUser(credentials)
 		setLoading(false)
-		console.log(response)
+		// console.log(response)
 		console.log("Login Status: ", response.status)
 		if (response.status === "success") {
-			// login()
+			login(response.userData.jwt)
 			navigate("/")
 		} else {
 			setShowError(true)
