@@ -5,18 +5,21 @@ import { TbUserHexagon } from "react-icons/tb";
 import { useAuth } from "../Context/AuthContext";
 
 import { Link } from "react-router-dom";
+import { useUser } from "../Context/UserContext";
 
 
 const Navbar = () => {
   const [showUserMenu, setShowUserMenu] = useState(false)
 
   const { currentUser, login, logout } = useAuth();
+  const userObj = useUser()
 
   const toggleShowUserMenu = () => {
     setShowUserMenu(prev => !prev)
-    console.log(showUserMenu)
+    console.log( showUserMenu)
   }
 
+  console.log("useUser" , userObj)
   return (
     <> 
         <div className="w-full bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-[3px] shadow-xl">
@@ -52,7 +55,8 @@ const Navbar = () => {
                     </Link>
                     <div onClick={toggleShowUserMenu} className="flex items-center">
                         <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
-                            {currentUser}
+                            {/* {currentUser} */}
+                            {userObj && userObj.userData.first_name}
                         </h2>
                         <IconContext.Provider value={{className: "flex rounded-full text-4xl cursor-pointer hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500"}}>
                             <TbUserHexagon />
