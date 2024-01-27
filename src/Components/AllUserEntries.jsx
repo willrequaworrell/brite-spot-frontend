@@ -2,13 +2,17 @@ import { useEffect, useState } from "react"
 import { fetchAllUserEntries } from "../util/apiCalls"
 
 import Navbar from "./Navbar"
+import { useAuth } from "../Context/AuthContext"
+import EntryCard from "./EntryCard"
 
 
 const AllUserEntries = () => {
     const [userEntries, setUserEntries] = useState(null)
 
+    const {currentUser} = useAuth()
+
     const handleFetchEntries = async () => {
-        const entries = await fetchAllUserEntries(1) // HARDCODED
+        const entries = await fetchAllUserEntries(currentUser) // HARDCODED
         setUserEntries(entries)
     }
 
@@ -22,12 +26,7 @@ const AllUserEntries = () => {
             <Navbar/>
             <div className="flex h-full w-full flex-col items-center">
                 {userEntries && userEntries.map(entry => (
-                    <div key={entry.content} className=" w-1/2 m-4 bg-red-300 border-black border-2">
-                        <div>
-                            <p>{entry.date}</p>
-                        </div>
-                        <p>{entry.content}</p>
-                    </div>
+                    <EntryCard key={entry.content} entry={entry}/>
                 ))}
             </div>
         </div>
