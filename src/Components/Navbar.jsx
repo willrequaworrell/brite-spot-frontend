@@ -22,7 +22,7 @@ const Navbar = () => {
   console.log("useUser" , userObj)
   return (
     <> 
-        <div className="w-full bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-[3px] shadow-xl">
+        <div className="w-full bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-[2px] shadow-xl">
             <div className="relative flex h-full w-full items-center bg-white ">
                 {showUserMenu && 
                     <div className="absolute flex justify-center items-center right-0 top-full px-8 py-4 bg-red-400">

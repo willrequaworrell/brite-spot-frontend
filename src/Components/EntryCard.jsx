@@ -1,12 +1,38 @@
 import moment from "moment"
+import { useState } from "react";
+import { TiDelete } from "react-icons/ti";
+import Spinner from "./Spinner";
+
+import { deleteEntry } from "../util/apiCalls";
 
 
-const EntryCard = ({entry}) => {
+const EntryCard = ({entry, id, setUserEntries}) => {
+    const [deleteLoading, setDeleteLoading] = useState(false)
+
+
+    const handleDelete = async () => {
+        setDeleteLoading(true)
+        try {
+            const response = await deleteEntry(id)
+            console.log(response)
+            setUserEntries((prevEntries) => prevEntries.filter((entry) => entry.id !== id ))
+        } catch (error) {
+            console.log(error)
+        }
+        
+        
+        
+        setDeleteLoading(false)
+    }
+    
     return (
-        <div key={entry.content} className="w-1/2 m-4 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-lg shadow-xl">
-            <div className="p-1 h-full w-full items-center bg-gray-50 rounded-lg">
-                <div>
-                    <p className="font-bold">{moment(entry.date).format('M/DD')}</p>
+        <div key={entry.content} className="w-1/2 m-4 hover:scale-105 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-lg shadow-lg">
+            <div className="relative p-1 h-full w-full items-center bg-white rounded-lg">
+                <div className="flex">
+                    <p className="font-bold flex-1">{moment(entry.date).format('M/DD')}</p>
+                    <div onClick={handleDelete}>
+                        {deleteLoading ? <Spinner/> : <TiDelete className="text-2xl hover:text-red-400" />}
+                    </div>
                 </div>
                 <p>{entry.content}</p>
             </div>

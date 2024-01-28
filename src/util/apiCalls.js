@@ -23,7 +23,7 @@ export const signInUser = async (credentials) => {
         console.log("signing in", editedCredentials)
         const response = await axios.post(`http://localhost:3000/login`, editedCredentials , {headers: apiKeyHeader} )
         setTokenCookie(response.data.jwt)
-        return {status: "success", userData: response.data}
+        return {status: "success", userData: response.data.jwt}
     } catch (e) {
         return {status: "error", errorData: e}
     }
@@ -57,3 +57,14 @@ export const submitEntry = async (entryData) => {
         console.log(e)
     }
 }
+
+export const deleteEntry = async (entryId) => {
+    try {
+        const response = await axios.delete(`http://localhost:3000/entry/${entryId}`, {headers: apiKeyHeader});
+        console.log(response);
+        return {status: "success", message: "Entry deleted successfully"};
+    } catch (e) {
+        console.error(e);
+        return {status: "error", errorData: e};
+    }
+};

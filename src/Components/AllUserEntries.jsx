@@ -12,7 +12,7 @@ const AllUserEntries = () => {
     const {currentUser} = useAuth()
 
     const handleFetchEntries = async () => {
-        const entries = await fetchAllUserEntries(currentUser) // HARDCODED
+        const entries = await fetchAllUserEntries(currentUser) 
         setUserEntries(entries)
     }
 
@@ -22,11 +22,11 @@ const AllUserEntries = () => {
 
     console.log(userEntries)
     return (
-        <div className="h-full w-full">
+        <div className="h-screen w-full bg-gray-100">
             <Navbar/>
             <div className="flex h-full w-full flex-col items-center">
                 {userEntries && userEntries.map(entry => (
-                    <EntryCard key={entry.content} entry={entry}/>
+                    <EntryCard setUserEntries={setUserEntries} key={entry.id} id={entry.id} entry={entry}/>
                 ))}
             </div>
         </div>
