@@ -31,7 +31,7 @@ const EntryCard = ({entry, id, setUserEntries}) => {
                 <div className="flex">
                     <p className="font-bold flex-1">{moment(entry.date).format('M/DD')}</p>
                     <div onClick={handleDelete}>
-                        {deleteLoading ? <Spinner/> : <TiDelete className="text-2xl hover:text-red-400" />}
+                        {deleteLoading ? <Spinner size={"small"}/> : <TiDelete className="text-2xl hover:text-red-400" />}
                     </div>
                 </div>
                 <p>{entry.content}</p>

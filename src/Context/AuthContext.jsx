@@ -9,7 +9,7 @@ export const AuthProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null)
 
     const login = (token) => {
-      // console.log(token)
+      console.log(token)
       const decodedToken = jwtDecode(token)
       console.log("decoded: ", decodedToken)
       setCurrentUser(decodedToken.userId);

@@ -31,7 +31,8 @@ const LoginForm = () => {
 		// console.log(response)
 		console.log("Login Status: ", response.status)
 		if (response.status === "success") {
-			login(response.userData.jwt)
+			console.log("test", response)
+			login(response.userData)
 			navigate("/")
 		} else {
 			setShowError(true)

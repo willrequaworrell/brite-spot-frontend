@@ -22,6 +22,7 @@ export const signInUser = async (credentials) => {
     try {
         console.log("signing in", editedCredentials)
         const response = await axios.post(`http://localhost:3000/login`, editedCredentials , {headers: apiKeyHeader} )
+        // console.log(response)
         setTokenCookie(response.data.jwt)
         return {status: "success", userData: response.data.jwt}
     } catch (e) {
