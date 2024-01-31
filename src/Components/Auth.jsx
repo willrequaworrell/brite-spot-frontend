@@ -15,13 +15,13 @@ const Auth = () => {
 	}
 
 	return (
-		<div className="h-full w-full flex-col justify-center items-center">
+		<div className="h-screen w-full flex-col justify-center items-center bg-gray-100">
 			<div className="flex justify-center items-center">
 				<img src="/logo2.png" alt="logo" className="h-32  -mr-4" />
 				<h1 className="text-6xl ">BriteSpot</h1>
 			</div>
 			<div className="flex justify-center">
-				<div className="w-[35%]  flex justify-center rounded-xl bg-black p-1 shadow-xl">
+				<div className="w-[35%]  flex justify-center rounded-xl bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] shadow-xl">
 					<div className="h-full w-full rounded-xl bg-white p-4">
 						<div className="flex-col items-center text-center m-2">
 							<h2 className="text-2xl m-2">{authModeToggle}</h2>

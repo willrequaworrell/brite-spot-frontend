@@ -53,9 +53,9 @@ export const fetchAllUserEntries = async (userId) => {
 export const submitEntry = async (entryData) => {
     try {
         const response = await axios.post('http://localhost:3000/entry', entryData, {headers: apiKeyHeader} )
-        console.log(response)
+        return {status: "success", message: "Entry logged successfully"};
     } catch (e) {
-        console.log(e)
+        return {status: "error", errorData: e};
     }
 }
 

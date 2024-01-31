@@ -3,20 +3,30 @@ import { submitEntry } from "../util/apiCalls"
 
 import CustomButton from "./CustomButton"
 import { useAuth } from "../Context/AuthContext"
+import Spinner from "./Spinner"
 
 const EntryContainer = () => {
   const [entryContent, setEntryContent] = useState("")
   const {currentUser} = useAuth()
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (event) => {
     setEntryContent(event.target.value)
   }
   
-  /* THIS IS CURRENTLY HARDCODED TO userId=1 */
-  const handleSubmit = () => {
-    submitEntry({"userId": currentUser, "content": entryContent})
+  const handleSubmit = async () => {
+    setLoading(true)
     setEntryContent("")
+    const response = await submitEntry({"userId": currentUser, "content": entryContent})
+    setLoading(false)
   }
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); 
+      handleSubmit();
+    }
+  };
 
   return (
     // <div className="w-[50%] justify-center m-8 rounded-xl bg-gradient-to-r from-green-800 via-indigo-500 to-yellow-800 p-2 shadow-xl">
@@ -32,13 +42,14 @@ const EntryContainer = () => {
                   <textarea 
                     value={entryContent} 
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                     className="w-full min-h-48 p-2 text-xl rounded-xl  bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 inline-block text-transparent bg-clip-text" >
                   </textarea>
                   
                 </div>
 
               </div>
-            <CustomButton text={"Submit"} onClick={handleSubmit}/>
+            {loading ? <Spinner/> : <CustomButton text={"Submit"} onClick={handleSubmit}/>}
 
             </div>
         </div>
