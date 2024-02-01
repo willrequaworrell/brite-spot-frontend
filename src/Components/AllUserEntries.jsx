@@ -4,6 +4,7 @@ import { fetchAllUserEntries } from "../util/apiCalls"
 import Navbar from "./Navbar"
 import { useAuth } from "../Context/AuthContext"
 import EntryCard from "./EntryCard"
+import Spinner from "./Spinner"
 
 
 const AllUserEntries = () => {
@@ -25,9 +26,15 @@ const AllUserEntries = () => {
         <div className="h-screen w-full bg-gray-100">
             <Navbar/>
             <div className="flex h-full w-full flex-col items-center">
-                {userEntries && userEntries.map(entry => (
-                    <EntryCard setUserEntries={setUserEntries} key={entry.id} id={entry.id} entry={entry}/>
-                ))}
+                {userEntries ? (
+                    userEntries.map(entry => (
+                        <EntryCard setUserEntries={setUserEntries} key={entry.id} id={entry.id} entry={entry}/>
+                    ))) : (
+                        <div className="mt-24">
+                            <Spinner size={"large"} />
+                        </div>
+                    )
+                }
             </div>
         </div>
   )
