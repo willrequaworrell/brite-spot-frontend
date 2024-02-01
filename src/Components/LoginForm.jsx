@@ -58,8 +58,8 @@ const LoginForm = () => {
 		</div>
 		
 		<div className="flex justify-center">
-			<div className="flex justify-center items-center text-center w-1/4 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px]">
-				<div className={`flex w-full  rounded-lg ${!loading && "border-2 border-black hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500" }`}>
+			<div className={`flex justify-center items-center text-center rounded-lg w-1/4 ${!loading && "bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500  p-[2px]"}`}>
+				<div className={`flex justify-center w-full bg-white rounded-lg ${!loading && "hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500" }`}>
 					{loading ? (
 						<Spinner/>
 					) : (

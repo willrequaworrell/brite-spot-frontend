@@ -53,12 +53,15 @@ const SignUpForm = () => {
 		</div>
 		
 		<div className="flex justify-center">
-			<div className={`flex justify-center items-center w-1/4 p-1 text-center rounded-lg ${!loading && "border-4 border-black hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500" }`}>
-				{loading ? (
-					<Spinner/>
-				) : (
-					<input type="submit" className="cursor-pointer" disabled={loading} />
-				)}
+			<div className={`flex justify-center items-center text-center rounded-lg w-1/4 ${!loading && "bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500  p-[2px]"}`}>
+				<div className={`flex justify-center w-full bg-white rounded-lg ${!loading && "hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500" }`}>
+					{loading ? (
+						<Spinner/>
+					) : (
+						<input type="submit" className="cursor-pointer" disabled={loading} />
+					)}
+				</div>
+
 			</div>
 
 		</div>

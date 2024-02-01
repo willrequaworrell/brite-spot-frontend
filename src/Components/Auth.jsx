@@ -2,6 +2,8 @@ import { useState } from "react"
 
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
+import { PiSunHorizonDuotone } from "react-icons/pi";
+
 
 const Auth = () => {
 	const [authModeToggle, setAuthModeToggle] = useState("Sign Up")
@@ -17,8 +19,8 @@ const Auth = () => {
 	return (
 		<div className="h-screen w-full flex-col justify-center items-center bg-gray-100">
 			<div className="flex justify-center items-center">
-				<img src="/logo2.png" alt="logo" className="h-32  -mr-4" />
-				<h1 className="text-6xl ">BriteSpot</h1>
+				<img src="/logo5.png" alt="logo" className="h-28 " />
+				{/* <h1 className="text-6xl ">BriteSpot</h1> */}
 			</div>
 			<div className="flex justify-center">
 				<div className="w-[35%]  flex justify-center rounded-xl bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] shadow-xl">
