@@ -48,7 +48,7 @@ const Navbar = () => {
                             History
                         </h2>
                     </Link>
-                    <Link to={"/auth"} className="mr-12">
+                    <Link to={"/visualize"} className="mr-12">
                         <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
                             Visualize
                         </h2>

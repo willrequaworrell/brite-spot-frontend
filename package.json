@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@visx/wordcloud": "^3.3.0",
     "axios": "^1.6.4",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
