@@ -50,6 +50,17 @@ export const fetchAllUserEntries = async (userId) => {
     }
 }
 
+export const fetchWordCloudData = async (userId) => {
+    try {
+        const response = await axios.get(`http://localhost:3000/user/${userId}/entries/combined`, {headers: apiKeyHeader})
+        // console.log(response.data.entries)
+        return response.data.wordCountsArray
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
+
 export const submitEntry = async (entryData) => {
     try {
         const response = await axios.post('http://localhost:3000/entry', entryData, {headers: apiKeyHeader} )
