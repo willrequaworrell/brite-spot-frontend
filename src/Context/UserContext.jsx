@@ -9,10 +9,9 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const { currentUser } = useAuth();
   const [userDetails, setUserDetails] = useState(null);
+  const [postedToday, setPostedToday] = useState(false)
 
   useEffect(() => {
-    // Fetch additional user details when currentUser changes (e.g., on login)
-    
     
     if (currentUser) {
       
@@ -25,10 +24,9 @@ export const UserProvider = ({ children }) => {
           console.log(error)
         }
       }
-
+      
       fetchWrapper()
-      // Make a request to fetch user details using currentUser.userId
-      // Update setUserDetails with the fetched data
+      
     }
   }, [currentUser]);
 

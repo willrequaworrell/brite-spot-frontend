@@ -50,6 +50,15 @@ export const fetchAllUserEntries = async (userId) => {
     }
 }
 
+export const fetchMostRecentUserEntry = async (userId) => {
+    try {
+        const response = await axios.get(`http://localhost:3000/user/${userId}/entries/today`, {headers: apiKeyHeader})
+        return response.data.entry
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const fetchWordCloudData = async (userId) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${userId}/entries/combined`, {headers: apiKeyHeader})

@@ -1,9 +1,11 @@
+import { useEffect } from "react"
 import EntryContainer from "./EntryContainer"
 import Navbar from "./Navbar"
 
 
 
 const Home = () => {
+
   return (
     <div className="h-screen w-full bg-gray-100">
         <Navbar/>
