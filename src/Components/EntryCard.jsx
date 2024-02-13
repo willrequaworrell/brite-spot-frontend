@@ -27,7 +27,7 @@ const EntryCard = ({entry, id, setUserEntries}) => {
     
     return (
         <div key={entry.content} className="w-1/2 m-4 hover:scale-105 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-lg shadow-lg">
-            <div className="relative p-1 h-full w-full items-center bg-white rounded-lg">
+            <div className="relative p-2 h-full w-full items-center bg-white rounded-lg">
                 <div className="flex">
                     <p className="font-bold flex-1">{moment(entry.date).format('M/DD')}</p>
                     <div onClick={handleDelete}>
