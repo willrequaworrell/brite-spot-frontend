@@ -10,8 +10,8 @@ import Spinner from "./Spinner"
 
 const Home = () => {
   const {currentUser} = useAuth()
-  const [isLoading, setIsLoading] = useState(true)
   const [hasPostedToday, setHasPostedToday] = useState(null)
+  const [hasEntries, setHasEntries] = useState(true)
 
   const isToday = (dateString) => {
     const date = new Date(dateString);
@@ -22,30 +22,38 @@ const Home = () => {
   }
 
   useEffect(() => {
-    setIsLoading(true)
     const fetchWrapper = async () => {
+    
       try {
         const response = await fetchMostRecentUserEntry(currentUser)
-        const postIsToday = isToday(response.date)
-        setHasPostedToday(postIsToday)
+        if (!response) {
+          setHasEntries(false)
+        } else {
+          const postIsToday = isToday(response.date)
+          setHasPostedToday(postIsToday)
+        }
         // console.log("post Today?", postIsToday)
       } catch (error) {
         console.log(error)
       }
     }
-    fetchWrapper().then(setIsLoading(false))
+    fetchWrapper()
     
   } , [currentUser])
   
-  console.log("loading?" , isLoading)
+  console.log("entries?", hasEntries)
   return (
     <div className="h-screen w-full bg-gray-100">
         <Navbar/>
-        {(isLoading && hasPostedToday === null) ? <Spinner size={"large"}/> : 
-          <div className="flex justify-center items-center">
-              {hasPostedToday ? <AlreadyPostedMessage /> : <EntryContainer setHasPostedToday={setHasPostedToday}/> }
+        {(hasPostedToday === null && hasEntries) ? (
+          <div className="w-full mt-24 flex justify-center items-center">
+            <Spinner size={"large"}/>
           </div>
-        }
+        ) : (
+          <div className="flex justify-center items-center">
+            {!hasEntries || !hasPostedToday ? <EntryContainer setHasPostedToday={setHasPostedToday}/> : <AlreadyPostedMessage /> }
+          </div>
+        )}
     </div>
   )
 }
