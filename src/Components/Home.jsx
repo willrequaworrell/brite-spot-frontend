@@ -51,7 +51,7 @@ const Home = () => {
           </div>
         ) : (
           <div className="flex justify-center items-center">
-            {!hasEntries || !hasPostedToday ? <EntryContainer setHasPostedToday={setHasPostedToday}/> : <AlreadyPostedMessage /> }
+            {!hasEntries || !hasPostedToday ? <EntryContainer setHasPostedToday={setHasPostedToday} setHasEntries={setHasEntries}/> : <AlreadyPostedMessage /> }
           </div>
         )}
     </div>

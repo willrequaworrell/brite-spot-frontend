@@ -9,17 +9,22 @@ import Spinner from "./Spinner"
 
 const AllUserEntries = () => {
     const [userEntries, setUserEntries] = useState(null)
-
+    const [hasEntries, setHasEntries] = useState(true)
     const {currentUser} = useAuth()
 
-    const handleFetchEntries = async () => {
-        const entries = await fetchAllUserEntries(currentUser) 
-        setUserEntries(entries)
-    }
+    
 
     useEffect(() => {
+        const handleFetchEntries = async () => {
+            const entries = await fetchAllUserEntries(currentUser) 
+            if (!entries) {
+                setHasEntries(false)
+            }
+            setUserEntries(entries)
+        }
+
         handleFetchEntries()
-    }, [])
+    }, [currentUser])
 
     console.log(userEntries)
     return (
@@ -30,9 +35,14 @@ const AllUserEntries = () => {
                     userEntries.map(entry => (
                         <EntryCard setUserEntries={setUserEntries} key={entry.id} id={entry.id} entry={entry}/>
                     ))) : (
-                        <div className="mt-24">
-                            <Spinner size={"large"} />
-                        </div>
+                        hasEntries ? (
+                            <div className="mt-24">
+                                <Spinner size={"large"} />
+                            </div>
+
+                        ) : (
+                            <p>{`Looks like you don't have any entries yet! Enter one here`}</p>
+                        )
                     )
                 }
             </div>
