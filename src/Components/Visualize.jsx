@@ -39,7 +39,7 @@ const Visualize = () => {
 	}, [currentUser])
 
 	return (
-		<div className="h-screen w-full bg-gray-100">
+		<div className="h-screen w-full overflow-y-auto bg-gray-100">
 			<Navbar/>
 			
 			<div className="flex justify-center items-center m-16">

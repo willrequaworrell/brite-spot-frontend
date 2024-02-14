@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IconContext } from "react-icons";
 import { FiSun } from "react-icons/fi";
 import { TbUserHexagon } from "react-icons/tb";
+import { TiThMenu } from "react-icons/ti";
 import { useAuth } from "../Context/AuthContext";
 
 import { Link } from "react-router-dom";
@@ -22,7 +23,7 @@ const Navbar = () => {
   console.log("useUser" , userObj)
   return (
     <> 
-        <div className="w-full bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-[2px] shadow-xl">
+        <div className="w-full hidden sm:hidden md:block bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-[2px] shadow-xl">
             <div className="relative flex h-full w-full items-center bg-white ">
                 {showUserMenu && 
                     <div className="absolute flex justify-center items-center right-0 top-full px-8 py-4 bg-red-400">
@@ -32,16 +33,13 @@ const Navbar = () => {
                     </div>
                 }
                 <div className="flex flex-1 items-center p-2">
-                    {/* <IconContext.Provider value={{className: "text-4xl mx-2"}}>
-                        <FiSun />
-                    </IconContext.Provider> */}
                     <img src="/logo5.png" alt="logo" className="h-20 -my-4" />
-                    {/* <h1 className="text-4xl ">BriteSpot</h1> */}
-                    
                 </div>
                 <div className="flex mx-8 items-center">
                     <Link to={"/"} className="mr-12">
-                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">Home</h2>
+                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
+                            Enter
+                        </h2>
                     </Link>
                     <Link to={"/history"} className="mr-12">
                         <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
@@ -53,14 +51,14 @@ const Navbar = () => {
                             Visualize
                         </h2>
                     </Link>
-                    <div onClick={toggleShowUserMenu} className="flex items-center">
-                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
+                    <div onClick={toggleShowUserMenu} className="flex items-center px-4">
+                        <h2 className="text-lg font-bold hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
                             {/* {currentUser} */}
                             {userObj && userObj.userData.first_name}
                         </h2>
-                        <IconContext.Provider value={{className: "flex rounded-full text-4xl cursor-pointer hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500"}}>
+                        {/* <IconContext.Provider value={{className: "flex rounded-full text-4xl cursor-pointer hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500"}}>
                             <TbUserHexagon />
-                        </IconContext.Provider>
+                        </IconContext.Provider> */}
                     </div>
                 </div>
                 <div>
@@ -68,6 +66,9 @@ const Navbar = () => {
                 </div>
 
             </div>
+        </div>
+        <div className="absolute left-8 top-8 md:hidden">
+            <TiThMenu />
         </div>
     </>
   )

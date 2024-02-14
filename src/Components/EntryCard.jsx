@@ -26,7 +26,7 @@ const EntryCard = ({entry, id, setUserEntries}) => {
     }
     
     return (
-        <div key={entry.content} className="w-1/2 m-4 hover:scale-105 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-lg shadow-lg">
+        <div key={entry.content} className="w-full sm:w-3/4 md:w-3/5 lg:w-1/2 m-4 hover:scale-105 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-lg shadow-lg">
             <div className="relative p-2 h-full w-full items-center bg-white rounded-lg">
                 <div className="flex">
                     <p className="font-bold flex-1">{moment(entry.date).format('M/DD')}</p>
