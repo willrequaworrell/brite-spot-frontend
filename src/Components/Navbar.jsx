@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { IconContext } from "react-icons";
-import { FiSun } from "react-icons/fi";
-import { TbUserHexagon } from "react-icons/tb";
-import { TiThMenu } from "react-icons/ti";
 import { useAuth } from "../Context/AuthContext";
-
-import { Link } from "react-router-dom";
 import { useUser } from "../Context/UserContext";
+
+import { TiThMenu } from "react-icons/ti";
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 import SidebarLink from "./SidebarLink";
 
 
@@ -79,6 +78,9 @@ const Navbar = () => {
         </div>
         {showSidebar ? (
             <div className="md:hidden absolute z-50 left-0 top-0 h-screen w-5/6 bg-gradient-to-t from-teal-500 via-yellow-500 to-pink-500  shadow-2xl ">
+                <div className="absolute  bg-white p-4 rounded-full -right-8 top-1/2 hover:scale-105" onClick={() => setShowSidebar(false)}>
+                    <MdOutlineKeyboardArrowLeft className="text-6xl" />
+                </div>
                 <div className="flex flex-col h-full w-full bg-white">
                     <div className="bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-[2px]">
                         <div className="flex w-full justify-center bg-white  py-4">
@@ -93,7 +95,7 @@ const Navbar = () => {
                         
                         <div className="mt-auto">
                             <div className="h-[2px] mx-4 bg-gray-100"/>
-                            <SidebarLink text={"Close"} onClick={() => setShowSidebar(false)} />
+                            {/* <SidebarLink text={"Close"} onClick={() => setShowSidebar(false)} /> */}
                             <SidebarLink linkTo={"/auth"} text={"Logout"} onClick={logout}/>
                         </div>
                     
@@ -102,10 +104,9 @@ const Navbar = () => {
                 </div>
             </div>
         ) : (
-            <div className="absolute left-8 top-8 md:hidden">
+            <div className="absolute left-8 top-8 md:hidden hover:scale-105">
                 <div className="text-2xl" onClick={toggleShowSidebar}>
                     {<TiThMenu />}
-
                 </div>
             </div>
         )}
