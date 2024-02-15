@@ -11,13 +11,16 @@ import { useUser } from "../Context/UserContext";
 
 const Navbar = () => {
   const [showUserMenu, setShowUserMenu] = useState(false)
-
+  const [showSidebar, setShowSidebar] = useState(false)
   const { currentUser, login, logout } = useAuth();
   const userObj = useUser()
 
   const toggleShowUserMenu = () => {
     setShowUserMenu(prev => !prev)
-    console.log( showUserMenu)
+  }
+
+  const toggleShowSidebar = () => {
+    setShowSidebar(prev => !prev)
   }
 
   console.log("useUser" , userObj)
@@ -67,9 +70,76 @@ const Navbar = () => {
 
             </div>
         </div>
-        <div className="absolute left-8 top-8 md:hidden">
-            <TiThMenu />
-        </div>
+        {showSidebar ? (
+            <div className="md:hidden absolute z-50 left-0 top-0 h-screen w-1/2 bg-gradient-to-t from-teal-500 via-yellow-500 to-pink-500 pr-[2px] shadow-2xl ">
+                <div className="flex flex-col h-full w-full bg-white">
+                    <div className="flex w-full justify-center py-4 border-b-2 border-gray-300">
+                        <p className="text-2xl ">Menu</p>
+                    </div>
+                    <div className="flex flex-col">
+                    
+                        <div className=" ">
+                            <Link to={"/"} className="">
+                                <div className=" bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 rounded-xl p-[2px] m-2">
+                                    <div className="flex h-full w-full rounded-xl p-2 bg-white">
+                                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
+                                            Enter
+                                        </h2>
+                                    </div>
+                                </div>
+                            </Link>
+
+                        </div>
+                        <div className=" ">
+                            <Link to={"/history"} className="">
+                                <div className=" bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 rounded-xl p-[2px] m-2">
+                                    <div className="flex h-full w-full rounded-xl p-2 bg-white">
+                                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
+                                            History
+                                        </h2>
+                                    </div>
+                                </div>
+                            </Link>
+
+                        </div>
+                        <div className=" ">
+                            <Link to={"/visualize"} className="">
+                                <div className=" bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 rounded-xl p-[2px] m-2">
+                                    <div className="flex h-full w-full rounded-xl p-2 bg-white">
+                                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
+                                            Visualize
+                                        </h2>
+                                    </div>
+                                </div>
+                            </Link>
+
+                        </div>
+                        <div className="">
+                            <Link to={"/visualize"} className="" onClick={logout}>
+                                <div className=" bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 rounded-xl p-[2px] m-2">
+                                    <div className="flex h-full w-full rounded-xl p-2 bg-white">
+                                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
+                                            Logout
+                                        </h2>
+                                    </div>
+                                </div>
+                            </Link>
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+            </div>
+        ) : (
+            <div className="absolute left-8 top-8 md:hidden">
+                <div className="text-2xl" onClick={toggleShowSidebar}>
+                    {<TiThMenu />}
+
+                </div>
+            </div>
+        )}
+        
     </>
   )
 }
