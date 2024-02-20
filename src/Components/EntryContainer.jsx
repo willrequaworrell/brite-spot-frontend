@@ -53,7 +53,7 @@ const EntryContainer = ({setHasPostedToday, setHasEntries}) => {
                     value={entryContent} 
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
-                    className="w-full min-h-48 p-2 text-xl rounded-xl  bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 inline-block text-transparent bg-clip-text" >
+                    className="w-full min-h-48 p-2 text-sm sm:text-xl rounded-xl  bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 inline-block text-transparent bg-clip-text" >
                   </textarea>
                   
                 </div>
