@@ -5,7 +5,7 @@ import { useUser } from "../Context/UserContext";
 import { TiThMenu } from "react-icons/ti";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
-import { GrClose } from "react-icons/gr";
+import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";
 
 import SidebarLink from "./SidebarLink";
@@ -80,10 +80,10 @@ const Navbar = () => {
         </div>
         {showSidebar ? (
             <div className="md:hidden absolute z-50 left-0 top-0 h-screen w-5/6 bg-gradient-to-t from-teal-500 via-yellow-500 to-pink-500 rounded-r-2xl shadow-2xl">
-                <div className="absolute  bg-white  rounded-full right-6 top-6  hover:scale-105" onClick={() => setShowSidebar(false)}>
+                <div className="absolute  bg-white  rounded-full right-4 top-4  hover:scale-105" onClick={() => setShowSidebar(false)}>
                     {/* <MdOutlineKeyboardArrowLeft className="text-4xl" /> */}
                     {/* <IoClose className="text-4xl" /> */}
-                    <GrClose className="text-2xl" />
+                    <TiDelete className="text-4xl hover:text-red-400" />
                 </div>
                 <div className="flex flex-col h-full w-full bg-white rounded-r-2xl">
                     <div className="bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 rounded-tr-2xl rounded-b-none pb-[2px]">
