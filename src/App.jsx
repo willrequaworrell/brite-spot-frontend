@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 
 import { AuthProvider } from "./Context/AuthContext"
 import { UserProvider } from "./Context/UserContext"
+import { ActivePageProvider } from "./Context/ActivePageContext"
 import Auth from "./Components/Auth"
 import Home from "./Components/Home"
 import AllUserEntries from "./Components/AllUserEntries"
@@ -14,14 +15,16 @@ function App() {
 		<>
 			<AuthProvider>
 				<UserProvider>
-					<Routes>
-						<Route path="/auth" element={<Auth/>}/>
-						<Route element={<ProtectedRoute/>}>
-							<Route path="/" element={<Home/>}/>
-							<Route path="/history" element={<AllUserEntries/>}/>
-							<Route path="/visualize" element={<Visualize/>}/>
-						</Route>
-					</Routes>
+					<ActivePageProvider>
+						<Routes>
+							<Route path="/auth" element={<Auth/>}/>
+							<Route element={<ProtectedRoute/>}>
+								<Route path="/" element={<Home/>}/>
+								<Route path="/history" element={<AllUserEntries/>}/>
+								<Route path="/visualize" element={<Visualize/>}/>
+							</Route>
+						</Routes>
+					</ActivePageProvider>
 				</UserProvider>
 			</AuthProvider>
 		</>

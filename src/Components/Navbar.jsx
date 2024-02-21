@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../Context/AuthContext";
 import { useUser } from "../Context/UserContext";
+import { useActivePage } from "../Context/ActivePageContext";
 
 import { TiThMenu } from "react-icons/ti";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
@@ -14,7 +15,7 @@ import SidebarLink from "./SidebarLink";
 const Navbar = () => {
   const [showUserMenu, setShowUserMenu] = useState(false)
   const [showSidebar, setShowSidebar] = useState(false)
-  const [activeLink, setActiveLink] = useState('home')
+  const {activePage, setActivePage} = useActivePage()
   const {logout } = useAuth();
   const userObj = useUser()
 
@@ -28,9 +29,9 @@ const Navbar = () => {
 
   const handleLinkClick = (event) => {
     const clickedLink = event.target.id
-    console.log(event.target.id)
+    console.log("clicked link: ", clickedLink)
   }
-
+  console.log("activePage: ", activePage)
   console.log("useUser" , userObj)
   return (
     <> 
@@ -48,20 +49,33 @@ const Navbar = () => {
                 </div>
                 <div className="flex mx-8 items-center">
                     <Link to={"/"} className="mr-12" >
-                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
-                            Enter
-                        </h2>
+                        <div className={`bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 ${activePage === "enter" && "pb-[2px]"}`}>
+                            <div className="bg-white px-2">
+                                <h2 className={`text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text`}>
+                                    Enter
+                                </h2>
+                            </div>
+                        </div>
                     </Link>
                     <Link to={"/history"} className="mr-12" >
-                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
-                            History
-                        </h2>
+                        <div className={`bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 ${activePage === "history" && "pb-[2px]"}`}>
+                            <div className="bg-white px-2">
+                                <h2 className={`text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text`}>
+                                    History
+                                </h2>
+                            </div>
+                        </div>
                     </Link>
                     <Link to={"/visualize"} className="mr-12" >
-                        <h2 className="text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
-                            Visualize
-                        </h2>
+                        <div className={`bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 ${activePage === "visualize" && "pb-[2px]"}`}>
+                            <div className="bg-white px-2">
+                                <h2 className={`text-lg hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text`}>
+                                    Visualize
+                                </h2>
+                            </div>
+                        </div>
                     </Link>
+                    
                     <div onClick={toggleShowUserMenu} className="flex items-center px-4">
                         <h2 className="text-lg font-bold hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text">
                             {/* {currentUser} */}
@@ -93,9 +107,9 @@ const Navbar = () => {
                     </div>
                     <div className="flex flex-col h-full justify-between">
                     
-                        <SidebarLink id="home" linkTo={"/"} text={"Enter"} onClick={handleLinkClick} active/>
-                        <SidebarLink id="history" linkTo={"/history"} text={"History"} onClick={handleLinkClick}/>
-                        <SidebarLink id="visualize" linkTo={"/visualize"} text={"Visualize"} onClick={handleLinkClick}/>
+                        <SidebarLink id="enter" linkTo={"/"} text={"Enter"} onClick={handleLinkClick} active={activePage === "enter"}/>
+                        <SidebarLink id="history" linkTo={"/history"} text={"History"} onClick={handleLinkClick} active={activePage === "history"}/>
+                        <SidebarLink id="visualize" linkTo={"/visualize"} text={"Visualize"} onClick={handleLinkClick} active={activePage === "visualize"}/>
                         
                         <div className="mt-auto">
                             <div className="h-[2px] mx-4 bg-gray-100"/>
