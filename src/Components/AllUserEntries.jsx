@@ -31,7 +31,7 @@ const AllUserEntries = () => {
         <div className="h-screen w-full overflow-y-auto bg-gray-100">
             <Navbar/>
             <div className="flex justify-center">
-                <div className="flex w-full flex-col items-center m-16">
+                <div className="flex w-full flex-col items-center mx-16 md:mx-24 mt-24">
                     {userEntries ? (
                         userEntries.map(entry => (
                             <EntryCard setUserEntries={setUserEntries} key={entry.id} id={entry.id} entry={entry}/>

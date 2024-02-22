@@ -42,7 +42,7 @@ const Visualize = () => {
 		<div className="h-screen w-full overflow-y-auto bg-gray-100">
 			<Navbar/>
 			
-			<div className="flex justify-center items-center m-16">
+			<div className="flex justify-center items-center m-32">
 				<div className="w-[80%] bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-xl shadow-xl">
 					<div className=" bg-white rounded-xl">
 						{wordcloudData ? (

@@ -35,7 +35,17 @@ const Navbar = () => {
   console.log("useUser" , userObj)
   return (
     <> 
-        <div className="w-full hidden sm:hidden md:block bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-[2px] shadow-xl">
+        <div className="md:hidden fixed z-10 flex justify-center w-full bg-gray-100">
+            <div className="absolute left-8 top-8 md:hidden hover:scale-105">
+                <div className="text-2xl" onClick={toggleShowSidebar}>
+                    {<TiThMenu />}
+                </div>
+            </div>
+            <div className="flex items-center p-2">
+                <img src="/logo5.png" alt="logo" className="h-16 sm:h-20" />
+            </div>
+        </div>
+        <div className="w-full fixed top-0 z-10 hidden sm:hidden md:block bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 pb-[2px] shadow-xl">
             <div className="relative flex h-full w-full items-center bg-white ">
                 {showUserMenu && 
                     <div className="absolute flex justify-center items-center right-0 top-full px-8 py-4 bg-red-400">
@@ -92,11 +102,9 @@ const Navbar = () => {
 
             </div>
         </div>
-        {showSidebar ? (
+        {showSidebar && (
             <div className="md:hidden absolute z-50 left-0 top-0 h-screen w-5/6 bg-gradient-to-t from-teal-500 via-yellow-500 to-pink-500 rounded-r-2xl shadow-2xl">
                 <div className="absolute  bg-white  rounded-full right-4 top-4  hover:scale-105" onClick={() => setShowSidebar(false)}>
-                    {/* <MdOutlineKeyboardArrowLeft className="text-4xl" /> */}
-                    {/* <IoClose className="text-4xl" /> */}
                     <TiDelete className="text-4xl hover:text-red-400" />
                 </div>
                 <div className="flex flex-col h-full w-full bg-white rounded-r-2xl">
@@ -121,13 +129,9 @@ const Navbar = () => {
 
                 </div>
             </div>
-        ) : (
-            <div className="absolute left-8 top-8 md:hidden hover:scale-105">
-                <div className="text-2xl" onClick={toggleShowSidebar}>
-                    {<TiThMenu />}
-                </div>
-            </div>
-        )}
+        ) 
+            
+        }
         
     </>
   )
