@@ -43,7 +43,7 @@ const Home = () => {
   
   console.log("entries?", hasEntries)
   return (
-    <div className="h-screen w-full bg-gray-100">
+    <div className="h-screen w-full overflow-y-auto bg-gray-100">
         <Navbar/>
         {(hasPostedToday === null && hasEntries) ? (
           <div className="w-full mt-24 flex justify-center items-center">
