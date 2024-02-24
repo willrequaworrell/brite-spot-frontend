@@ -4,6 +4,7 @@ import { useUser } from "../Context/UserContext";
 import { useActivePage } from "../Context/ActivePageContext";
 
 import { TiThMenu } from "react-icons/ti";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import NavbarLink from "./NavbarLink";
@@ -64,6 +65,9 @@ const Navbar = () => {
                             {/* {currentUser} */}
                             {userObj && userObj.userData.first_name}
                         </h2>
+                        <div className="text-xl">
+                            {showUserMenu ? <FaCaretUp /> : <FaCaretDown />}
+                        </div>
                         {/* <IconContext.Provider value={{className: "flex rounded-full text-4xl cursor-pointer hover:scale-105 hover:bg-gradient-to-r from-teal-500 via-yellow-500"}}>
                             <TbUserHexagon />
                         </IconContext.Provider> */}
