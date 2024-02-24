@@ -41,35 +41,43 @@ const Visualize = () => {
 	return (
 		<div className="h-screen w-full overflow-y-auto bg-gray-100">
 			<Navbar/>
-			
-			<div className="flex justify-center items-center my-36  mx-18 lg:mx-24 xl:mx-32">
-				<div className="w-[80%] bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-xl shadow-xl">
-					<div className=" bg-white rounded-xl">
-						{wordcloudData ? (
-							<WordCloud 
-								data={wordcloudData} 
-								height={350}
-								fill={handleFill}
-								fontSize={(word) => Math.max(10 , Math.max(Math.log2(word.value), 2) * 10)}
-								font="sans-serif"
-								fontWeight="bold"
-							/>
+			<div className="hidden sm:block">
+				<div className="flex justify-center items-center my-36  mx-18 lg:mx-24 xl:mx-32">
+					<div className="w-[80%] bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-xl shadow-xl">
+						<div className=" bg-white rounded-xl">
+							{wordcloudData ? (
+								<WordCloud 
+									data={wordcloudData} 
+									height={350}
+									fill={handleFill}
+									fontSize={(word) => Math.max(10 , Math.max(Math.log2(word.value), 2) * 10)}
+									font="sans-serif"
+									fontWeight="bold"
+								/>
 
-							) : (
-								hasEntries ? (
-									<div className="w-full flex justify-center items-center p-16">
-										<Spinner size={"large"}/>
-									</div>
 								) : (
-									<div className="w-full h-[350px] flex justify-center items-center">
-										<p>No entries yet!</p>
-									</div>
+									hasEntries ? (
+										<div className="w-full flex justify-center items-center p-16">
+											<Spinner size={"large"}/>
+										</div>
+									) : (
+										<div className="w-full h-[350px] flex justify-center items-center">
+											<p>No entries yet!</p>
+										</div>
+									)
 								)
-							)
-						}
+							}
+						</div>
 					</div>
+
 				</div>
 
+			</div>
+			<div className="w-full h-screen flex justify-center items-center">
+				<div className="flex-col items-center">
+					<img src="/rotate.png" alt="rotate phone" className="sm:hidden h-48" />
+					<p className="text-center text-lg font-bold">Rotate your device</p>
+				</div>
 			</div>
 			
 		
