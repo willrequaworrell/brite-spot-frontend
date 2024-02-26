@@ -73,9 +73,9 @@ const Visualize = () => {
 				</div>
 
 			</div>
-			<div className="w-full h-screen flex justify-center items-center">
+			<div className="sm:hidden w-full h-screen flex justify-center items-center">
 				<div className="flex-col items-center">
-					<img src="/rotate.png" alt="rotate phone" className="sm:hidden h-48" />
+					<img src="/rotate.png" alt="rotate phone" className=" h-48" />
 					<p className="text-center text-lg font-bold">Rotate your device</p>
 				</div>
 			</div>

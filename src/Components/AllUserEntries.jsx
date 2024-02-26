@@ -42,9 +42,9 @@ const AllUserEntries = () => {
                                 </div>
 
                             ) : (
-                                <div className="w-1/2 hover:scale-105 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-lg shadow-lg">
+                                <div className="w-1/2 mt-32 hover:scale-105 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-lg shadow-lg">
                                     <div className="relative p-4 h-full w-full items-center bg-white rounded-lg">
-                                        <div className="flex justify-center">
+                                        <div className="flex justify-center text-center">
                                             <p>{`Looks like you don't have any entries yet! Enter one here`}</p>
                                         </div>
                                     </div>

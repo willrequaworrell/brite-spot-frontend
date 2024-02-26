@@ -9,7 +9,6 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const { currentUser } = useAuth();
   const [userDetails, setUserDetails] = useState(null);
-  const [postedToday, setPostedToday] = useState(false)
 
   useEffect(() => {
     
