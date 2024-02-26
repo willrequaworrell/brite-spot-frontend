@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import { useAuth } from "../Context/AuthContext";
 import { signInUser } from "../util/apiCalls";
 
-import { useState } from "react";
+import AuthFormInput from "./AuthFormInput";
 import Spinner from "./Spinner";
+
 
 
 
@@ -43,17 +45,24 @@ const LoginForm = () => {
 		<form onSubmit={handleSubmit(onSubmit)} className="flex-col items-center w-full">
 		<div className="">
 			
-			<div className="m-4 flex-col text-center">
-				<p className="">Email</p>
-				<input {...register("email", { required: true })} className="p-1 border-2 border-gray-400 rounded-lg"/>
-				{errors.email && <p className="text-xs text-red-500">Please enter a valid email</p>}
-			</div>
-			<div className="m-4 text-center">
-				<p>Password</p>
-				<input {...register("password", { required: true })} type="password" className="p-1 border-2 border-gray-400 rounded-lg" />
-				{showError && <p className="mt-2 text-xs text-red-500">Invalid Credentials</p> }
-				{errors.password && <p className="text-xs text-red-500">Password must include 8 characters, at least 1 number, and at least 1 special character</p>}
-			</div>
+			<AuthFormInput 
+				label={"Email"} 
+				name={"email"} 
+				isRequired={true} 
+				register={register}
+				regex={/^[^\s@]+@[^\s@]+\.[^\s@]+$/}
+				errorObj={errors.email}
+				errorMsg={"Please enter a valid email"}
+			/>
+
+			<AuthFormInput 
+				label={"Password"} 
+				name={"password"} 
+				type={"password"}
+				isRequired={true} 
+				register={register}
+				errorObj={errors.password}
+			/>
 
 		</div>
 		
@@ -63,7 +72,9 @@ const LoginForm = () => {
 					{loading ? (
 						<Spinner/>
 					) : (
-						<input type="submit" className="cursor-pointer" disabled={loading} />
+						<div className="px-4">
+							<input type="submit" className=" text-xs md:text-sm cursor-pointer" disabled={loading} />
+						</div>
 					)}
 				</div>
 

@@ -16,7 +16,7 @@ const Auth = () => {
 	}
 
 	return (
-		<div className="h-screen w-full flex-col justify-center items-center bg-gray-100">
+		<div className="h-screen w-full pt-16 flex-col justify-center items-center bg-gray-100">
 			<div className="flex justify-center items-center">
 				<img src="/logo5.png" alt="logo" className="h-20 md:h-28 " />
 			</div>

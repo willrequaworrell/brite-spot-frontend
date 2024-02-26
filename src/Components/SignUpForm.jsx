@@ -57,6 +57,7 @@ const SignUpForm = () => {
 				<AuthFormInput 
 					label={"Password"} 
 					name={"password"} 
+					type={"password"}
 					isRequired={true} 
 					register={register}
 					regex={/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,20}$/}
@@ -72,7 +73,9 @@ const SignUpForm = () => {
 						{loading ? (
 							<Spinner/>
 						) : (
-							<input type="submit" className="cursor-pointer" disabled={loading} />
+							<div className="px-4">
+								<input type="submit" className=" text-xs md:text-sm cursor-pointer" disabled={loading} />
+							</div>
 						)}
 					</div>
 
