@@ -10,12 +10,13 @@ import AuthFormInput from "./AuthFormInput";
 const SignUpForm = () => {
 	const navigate = useNavigate()
 	const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
-
+	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(false)
 
 
 	const onSubmit = async (data) => {
 		setLoading(true)
+		setError(null)
 		reset({ 
             email: "",   
             password: "",
@@ -24,6 +25,10 @@ const SignUpForm = () => {
 		const response = await createUser(data)
 		setLoading(false)
 		console.log("Sign Up Status: ", response.status)
+		if (response.errorData){
+			console.log(response.errorData)
+			setError(response.errorData.error)
+		}
 		if (response.status === "success") {
 			navigate("/")
 		}
@@ -33,7 +38,9 @@ const SignUpForm = () => {
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="flex-col items-center w-full">
 			<div className="flex-col items-center">
-			
+				<div className="flex justify-center">
+					{error && <p className="text-xs text-center text-red-500">{error}</p>}
+				</div>
 				<AuthFormInput 
 					label={"First Name"} 
 					name={"first_name"} 

@@ -10,7 +10,8 @@ export const createUser = async (userData) => {
         console.log(response)
         return {status: "success", userData: response}
     } catch (e) {
-        return {status: "error", errorData: e}
+        // console.log("errObj:", e.response.data)
+        return {status: "error", errorData: e.response.data}
     }
 }
 
