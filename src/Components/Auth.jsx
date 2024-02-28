@@ -1,4 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Cookies from "js-cookie"
+
+import { useAuth } from "../Context/AuthContext";
 
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
@@ -6,6 +9,7 @@ import LoginForm from "./LoginForm";
 
 const Auth = () => {
 	const [authModeToggle, setAuthModeToggle] = useState("Sign Up")
+	const {currentUser, login} = useAuth()
 
 	const toggleAuthMode = () => {
 		if (authModeToggle === "Sign Up") {
@@ -14,6 +18,14 @@ const Auth = () => {
 			setAuthModeToggle("Sign Up")
 		}
 	}
+
+	useEffect( () => {
+		const tokenCookie = Cookies.get('jwt');
+		if (tokenCookie && !currentUser) {
+            console.log("logging in on auth")
+            login(tokenCookie);
+        }
+	} , [currentUser, login])
 
 	return (
 		<div className="h-screen w-full pt-16 flex-col justify-center items-center bg-gray-100">

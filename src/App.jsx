@@ -1,6 +1,6 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, Navigate } from "react-router-dom"
 
-import { AuthProvider } from "./Context/AuthContext"
+import { useAuth } from "./Context/AuthContext"
 import { UserProvider } from "./Context/UserContext"
 import { ActivePageProvider } from "./Context/ActivePageContext"
 import Auth from "./Components/Auth"
@@ -10,26 +10,28 @@ import ProtectedRoute from "./Components/ProtectedRoute"
 import Visualize from "./Components/Visualize"
 
 function App() {
+	const {currentUser} = useAuth()
 
 	return (
 		<>
-			<AuthProvider>
-				<UserProvider>
-					<ActivePageProvider>
-						<Routes>
-							<Route
-								
-							/>
-							<Route path="/auth" element={<Auth/>}/>
-							<Route element={<ProtectedRoute/>}>
-								<Route path="/" element={<Home/>}/>
-								<Route path="/history" element={<AllUserEntries/>}/>
-								<Route path="/visualize" element={<Visualize/>}/>
-							</Route>
-						</Routes>
-					</ActivePageProvider>
-				</UserProvider>
-			</AuthProvider>
+			{currentUser ? console.log("there is a user!") : console.log("no user!")}
+			<UserProvider>
+				<ActivePageProvider>
+					<Routes>
+						<Route
+							path="/auth"
+							element={currentUser ? <Navigate to="/" /> : <Auth />}
+						/>
+						{/* <Route path="/auth" element={<Auth/>}/> */}
+						<Route element={<ProtectedRoute/>}>
+							<Route path="/" element={<Home/>}/>
+							<Route path="/history" element={<AllUserEntries/>}/>
+							<Route path="/visualize" element={<Visualize/>}/>
+						</Route>
+					</Routes>
+				</ActivePageProvider>
+			</UserProvider>
+			
 		</>
 	)
 }
