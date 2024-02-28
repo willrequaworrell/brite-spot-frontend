@@ -17,6 +17,9 @@ function App() {
 				<UserProvider>
 					<ActivePageProvider>
 						<Routes>
+							<Route
+								
+							/>
 							<Route path="/auth" element={<Auth/>}/>
 							<Route element={<ProtectedRoute/>}>
 								<Route path="/" element={<Home/>}/>
