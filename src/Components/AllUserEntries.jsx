@@ -6,6 +6,23 @@ import { useAuth } from "../Context/AuthContext"
 import EntryCard from "./EntryCard"
 import Spinner from "./Spinner"
 
+import { CSVLink } from "react-csv"
+import { FaFileExport } from "react-icons/fa6";
+import { RiArrowUpDownFill } from "react-icons/ri";
+
+
+const data = [
+    { id: 1, name: 'John Doe', age: 30, email: 'john@example.com' },
+    { id: 2, name: 'Jane Smith', age: 25, email: 'jane@example.com' },
+    { id: 3, name: 'Bob Johnson', age: 35, email: 'bob@example.com' },
+  ];
+  
+const headers = [
+{ label: 'ID', key: 'id' },
+{ label: 'Name', key: 'name' },
+{ label: 'Age', key: 'age' },
+{ label: 'Email', key: 'email' },
+];
 
 const AllUserEntries = () => {
     const [userEntries, setUserEntries] = useState(null)
@@ -32,6 +49,19 @@ const AllUserEntries = () => {
             <Navbar/>
             <div className="flex justify-center">
                 <div className="flex w-full flex-col items-center mx-16 md:mx-24 mt-24">
+                    <div className="flex justify-around">
+                        <CSVLink data={data} headers={headers} filename="export.csv">
+                            <div className="flex justify-center items-center text-center m-2 p-1 px-2 bg-gray-200 rounded-full hover:scale-105">
+                                    <p className="mr-1 text-gray-600">Export</p>
+                                    <FaFileExport className="text-gray-600"/>
+                            </div>
+                        </CSVLink>
+                        <div className="flex justify-center items-center text-center m-2 p-1 px-2 bg-gray-200 rounded-full hover:scale-105">
+                            <p className="mr-1 text-gray-600">Sort</p>
+                            <RiArrowUpDownFill />
+                        </div>
+
+                    </div>
                     {userEntries ? (
                         userEntries.map(entry => (
                             <EntryCard setUserEntries={setUserEntries} key={entry.id} id={entry.id} entry={entry}/>
@@ -53,6 +83,7 @@ const AllUserEntries = () => {
                             )
                         )
                     }
+                    
                 </div>
 
             </div>

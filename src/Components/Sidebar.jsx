@@ -15,7 +15,7 @@ const Sidebar = ({setShowSidebar}) => {
       }
 
     return (
-        <div className="md:hidden absolute z-50 left-0 top-0 h-screen w-5/6 bg-gradient-to-t from-teal-500 via-yellow-500 to-pink-500 rounded-r-2xl shadow-2xl">
+        <div className="md:hidden absolute z-50 left-0 top-0 h-screen w-5/6 bg-gradient-to-t from-teal-500 via-yellow-500 to-pink-500 rounded-r-2xl shadow-2xl transition-transform duration-300 ease-in-out transform">
                 <div className="absolute  bg-white  rounded-full right-4 top-4  hover:scale-105" onClick={() => setShowSidebar(false)}>
                     <TiDelete className="text-4xl hover:text-red-400" />
                 </div>

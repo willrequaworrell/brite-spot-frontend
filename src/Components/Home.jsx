@@ -32,7 +32,6 @@ const Home = () => {
           const postIsToday = isToday(response.date)
           setHasPostedToday(postIsToday)
         }
-        // console.log("post Today?", postIsToday)
       } catch (error) {
         console.log(error)
       }
