@@ -11,6 +11,7 @@ const SignUpForm = () => {
 	const navigate = useNavigate()
 	const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
 	const [error, setError] = useState(null)
+	const [success, setSuccess] = useState(false)
 	const [loading, setLoading] = useState(false)
 
 
@@ -30,16 +31,21 @@ const SignUpForm = () => {
 			setError(response.errorData.error)
 		}
 		if (response.status === "success") {
-			navigate("/")
+			console.log("hootydoodle!")
+			setSuccess(true)
 		}
 	}
 
 	console.log(watch("password"))
+	console.log(success, "<---")
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="flex-col items-center w-full">
 			<div className="flex-col items-center">
 				<div className="flex justify-center">
 					{error && <p className="text-xs text-center text-red-500">{error}</p>}
+					<div className="bg-green-500">
+						{success && <p className="text-xs ">Sign Up Success! <span className="underline">Login?</span></p>}
+					</div>
 				</div>
 				<AuthFormInput 
 					label={"First Name"} 
