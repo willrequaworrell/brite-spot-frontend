@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { fetchAllUserEntries } from "../util/apiCalls"
 
 import Navbar from "./Navbar"
@@ -10,12 +11,6 @@ import { CSVLink } from "react-csv"
 import { FaFileExport } from "react-icons/fa6";
 import { RiArrowUpDownFill } from "react-icons/ri";
 
-
-const data = [
-    { id: 1, name: 'John Doe', age: 30, email: 'john@example.com' },
-    { id: 2, name: 'Jane Smith', age: 25, email: 'jane@example.com' },
-    { id: 3, name: 'Bob Johnson', age: 35, email: 'bob@example.com' },
-  ];
   
 const csvHeaders = [
     { label: 'Date', key: 'date' },
@@ -28,6 +23,7 @@ const AllUserEntries = () => {
     const [hasEntries, setHasEntries] = useState(true)
     const [newestFirst, setNewestFirst] = useState(true)
     const {currentUser} = useAuth()
+    const navigate = useNavigate()
 
     const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
 
@@ -86,10 +82,10 @@ const AllUserEntries = () => {
                                 </div>
 
                             ) : (
-                                <div className="w-1/2 mt-32 hover:scale-105 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-lg shadow-lg">
+                                <div className="w-full sm:w-3/4 md:w-3/5 lg:w-1/2 mt-32 hover:scale-105 bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-lg shadow-lg">
                                     <div className="relative p-4 h-full w-full items-center bg-white rounded-lg">
                                         <div className="flex justify-center text-center">
-                                            <p>{`Looks like you don't have any entries yet! Enter one here`}</p>
+                                            <p>{`Looks like you don't have any entries yet! `} <span onClick={() => navigate("/")} className="underline cursor-pointer hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 hover:text-transparent hover:bg-clip-text ">{"Enter one here"}</span></p> 
                                         </div>
                                     </div>
                                 </div>
