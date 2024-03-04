@@ -26,9 +26,19 @@ const AllUserEntries = () => {
     const [userEntries, setUserEntries] = useState(null)
     const [userEntriesForCSV, setUserEntriesForCSV] = useState([])
     const [hasEntries, setHasEntries] = useState(true)
+    const [newestFirst, setNewestFirst] = useState(true)
     const {currentUser} = useAuth()
 
-    
+    const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
+
+    const toggleSort = () => {
+        if (newestFirst) {
+            setUserEntries(userEntries.sort((a, b) => (new Date(a.date) - new Date(b.date)) ))
+        } else {
+            setUserEntries(userEntries.sort((a, b) => (new Date(b.date) - new Date(a.date)) ))
+        }
+        setNewestFirst(prev => !prev)
+    }
 
     useEffect(() => {
         const handleFetchEntries = async () => {
@@ -53,14 +63,14 @@ const AllUserEntries = () => {
                 <div className="flex w-full flex-col items-center mx-16 md:mx-24 mt-24">
                     {userEntries && 
                         <div className="flex justify-around">
-                            <CSVLink data={userEntriesForCSV} headers={csvHeaders} filename="export.csv">
+                            <CSVLink data={userEntriesForCSV} headers={csvHeaders} filename={`BriteSpot Export ${currentDate}.csv`}>
                                 <div className="flex justify-center items-center text-center m-2 p-1 px-2 bg-gray-200 rounded-full hover:scale-105">
                                         <p className="mr-1 text-gray-600">Export</p>
                                         <FaFileExport className="text-gray-600"/>
                                 </div>
                             </CSVLink>
-                            <div className="flex justify-center items-center text-center m-2 p-1 px-2 bg-gray-200 rounded-full hover:scale-105">
-                                <p className="mr-1 text-gray-600">Sort</p>
+                            <div onClick={toggleSort} className="flex justify-center items-center text-center m-2 p-1 px-2 bg-gray-200 rounded-full hover:scale-105">
+                                <p className="mr-1 text-gray-600">{newestFirst ? "Newest" : "Oldest"} First</p>
                                 <RiArrowUpDownFill />
                             </div>
 
