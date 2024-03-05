@@ -50,7 +50,7 @@ const Visualize = () => {
 									data={wordcloudData} 
 									height={350}
 									fill={handleFill}
-									fontSize={(word) => Math.max(10 , Math.max(Math.log2(word.value), 2) * 10)}
+									fontSize={(word) => Math.max(12 , Math.max(Math.log2(word.value), 2) * 10)}
 									font="sans-serif"
 									fontWeight="bold"
 								/>
