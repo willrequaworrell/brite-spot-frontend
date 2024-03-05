@@ -45,12 +45,13 @@ const Visualize = () => {
 				<div className="flex justify-center items-center my-36  mx-18 lg:mx-24 xl:mx-32">
 					<div className="w-[80%] bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] rounded-xl shadow-xl">
 						<div className=" bg-white rounded-xl">
+
 							{wordcloudData ? (
 								<WordCloud 
 									data={wordcloudData} 
 									height={350}
 									fill={handleFill}
-									fontSize={(word) => Math.max(12 , Math.max(Math.log2(word.value), 2) * 10)}
+									fontSize={(word) => Math.log2(word.value*2) * 12}
 									font="sans-serif"
 									fontWeight="bold"
 								/>
