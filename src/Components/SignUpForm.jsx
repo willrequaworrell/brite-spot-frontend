@@ -7,8 +7,8 @@ import { createUser } from "../util/apiCalls";
 import Spinner from "./Spinner";
 import AuthFormInput from "./AuthFormInput";
 
-const SignUpForm = () => {
-	const navigate = useNavigate()
+const SignUpForm = ({setAuthModeToggle}) => {
+	// const navigate = useNavigate()
 	const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
 	const [error, setError] = useState(null)
 	const [success, setSuccess] = useState(false)
@@ -42,10 +42,17 @@ const SignUpForm = () => {
 		<form onSubmit={handleSubmit(onSubmit)} className="flex-col items-center w-full">
 			<div className="flex-col items-center">
 				<div className="flex justify-center">
-					{error && <p className="text-xs text-center text-red-500">{error}</p>}
-					<div className="bg-green-500">
-						{success && <p className="text-xs ">Sign Up Success! <span className="underline">Login?</span></p>}
-					</div>
+					{error && (
+						<div className="bg-red-200 rounded-full py-1 px-2">
+							<p className="text-xs text-center text-red-400">{error}</p>
+						</div>
+					) }
+					
+					{success && (
+						<div className="bg-green-200 rounded-full py-1 px-2">
+							<p className="text-xs text center text-green-400">Sign Up Success! <span onClick={() => setAuthModeToggle('Login')} className="underline cursor-pointer">Login?</span></p>
+						</div>
+					)}
 				</div>
 				<AuthFormInput 
 					label={"First Name"} 

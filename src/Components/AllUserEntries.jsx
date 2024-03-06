@@ -61,12 +61,12 @@ const AllUserEntries = () => {
                         <div className="flex justify-around">
                             <CSVLink data={userEntriesForCSV} headers={csvHeaders} filename={`BriteSpot Export ${currentDate}.csv`}>
                                 <div className="flex justify-center items-center text-center m-2 p-1 px-2 bg-gray-200 rounded-full hover:scale-105">
-                                        <p className="mr-1 text-gray-600">Export</p>
+                                        <p className="text-xs md:text-sm mr-1 text-gray-600">Export</p>
                                         <FaFileExport className="text-gray-600"/>
                                 </div>
                             </CSVLink>
                             <div onClick={toggleSort} className="flex justify-center items-center text-center m-2 p-1 px-2 bg-gray-200 rounded-full hover:scale-105">
-                                <p className="mr-1 text-gray-600">{newestFirst ? "Newest" : "Oldest"} First</p>
+                                <p className="text-xs md:text-sm mr-1 text-gray-600">{newestFirst ? "Newest" : "Oldest"}</p>
                                 <RiArrowUpDownFill />
                             </div>
 

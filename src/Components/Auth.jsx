@@ -40,7 +40,7 @@ const Auth = () => {
 							<div className="h-[2px] w-full bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500"></div>
 						</div>
 						{authModeToggle === "Sign Up" ? (
-							<SignUpForm/>
+							<SignUpForm setAuthModeToggle={setAuthModeToggle}/>
 						) : (
 							<LoginForm />
 						)}
