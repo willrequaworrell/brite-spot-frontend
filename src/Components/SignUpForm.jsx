@@ -31,7 +31,6 @@ const SignUpForm = ({setAuthModeToggle}) => {
 			setError(response.errorData.error)
 		}
 		if (response.status === "success") {
-			console.log("hootydoodle!")
 			setSuccess(true)
 		}
 	}
