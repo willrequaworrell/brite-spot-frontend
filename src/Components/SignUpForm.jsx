@@ -36,7 +36,7 @@ const SignUpForm = ({setAuthModeToggle}) => {
 	}
 
 	console.log(watch("password"))
-	console.log(success, "<---")
+	
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="flex-col items-center w-full">
 			<div className="flex-col items-center">
