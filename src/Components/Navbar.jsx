@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../Context/AuthContext";
 import { useUser } from "../Context/UserContext";
 import { useActivePage } from "../Context/ActivePageContext";
+import { useNavigate } from "react-router-dom";
 
 import { TiThMenu } from "react-icons/ti";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
@@ -18,6 +19,7 @@ const Navbar = () => {
   const {activePage} = useActivePage()
   const {logout } = useAuth();
   const userObj = useUser()
+  const navigate = useNavigate()
 
   const toggleShowUserMenu = () => {
     setShowUserMenu(prev => !prev)
@@ -52,7 +54,7 @@ const Navbar = () => {
                         </Link>
                     </div>
                 }
-                <div className="flex flex-1 items-center p-2">
+                <div onClick={() => navigate('/')} className="flex flex-1 items-center p-2">
                     <img src="/logo5.png" alt="logo" className="h-20 -my-4" />
                 </div>
                 <div className="flex mx-8 items-center">
