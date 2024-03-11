@@ -27,6 +27,7 @@ const Auth = () => {
         }
 	} , [currentUser, login])
 
+	console.log(`${import.meta.env.VITE_DOMAIN}:3000/login`)
 	return (
 		<div className="h-screen w-full pt-16 flex-col justify-center items-center bg-gray-100">
 			<div className="flex justify-center items-center">
