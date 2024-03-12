@@ -7,5 +7,6 @@ export default defineConfig({
   define: {
     "process.env": process.env,
     VITE_DOMAIN: process.env.VITE_DOMAIN,
+    VITE_API_KEY: process.env.VITE_API_KEY,
   },
 })
