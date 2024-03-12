@@ -6,7 +6,7 @@ const apiKeyHeader = {"x-api-key": import.meta.env.VITE_API_KEY}
 export const createUser = async (userData) => {
     try {
         console.log("submitting", userData)
-        const response = await axios.post(`https://${import.meta.env.VITE_DOMAIN}:3000/signup`, userData , {headers: apiKeyHeader} )
+        const response = await axios.post(`https://${import.meta.env.VITE_DOMAIN.replace(/"/g, '')}:3000/signup`, userData , {headers: apiKeyHeader} )
         console.log(response)
         return {status: "success", userData: response}
     } catch (e) {
