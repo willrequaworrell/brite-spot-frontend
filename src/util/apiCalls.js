@@ -18,7 +18,7 @@ export const createUser = async (userData) => {
 
 export const signInUser = async (credentials) => {
     console.log(host)
-    console.log(host.replace())
+    console.log(host.replace(/"/g, ''))
     const editedCredentials = {
         "email": credentials.email,
         "password": credentials.password
