@@ -2,12 +2,12 @@ import axios from "axios"
 import { setTokenCookie } from "./cookieHelper"
 
 const apiKeyHeader = {"x-api-key": import.meta.env.VITE_API_KEY.replace(/"/g, '')}
-const host = import.meta.env.VITE_DOMAIN.replace(/"/g, '')
+const host = "https://britespotapi.w-r-w.com"
 // test
 export const createUser = async (userData) => {
     try {
         console.log("submitting", userData)
-        const response = await axios.post(`https://${import.meta.env.VITE_DOMAIN.replace(/"/g, '')}:3000/signup`, userData , {headers: apiKeyHeader} )
+        const response = await axios.post(`${host}/signup`, userData , {headers: apiKeyHeader} )
         console.log(response)
         return {status: "success", userData: response}
     } catch (e) {
@@ -25,7 +25,7 @@ export const signInUser = async (credentials) => {
     }
     try {
         console.log("signing in", editedCredentials)
-        const response = await axios.post(`https://britespotapi.w-r-w.com/login`, editedCredentials , {headers: apiKeyHeader} )
+        const response = await axios.post(`${host}/login`, editedCredentials , {headers: apiKeyHeader} )
         // console.log(response) 
         setTokenCookie(response.data.jwt)
         return {status: "success", userData: response.data.jwt}
@@ -36,7 +36,7 @@ export const signInUser = async (credentials) => {
 
 export const fetchUserDetails = async (userId) => {
     try {
-        const response = await axios.get(`http://${import.meta.env.VITE_DOMAIN}:3000/user/${userId}`, {headers: apiKeyHeader})
+        const response = await axios.get(`${host}/user/${userId}`, {headers: apiKeyHeader})
         return response.data
     } catch (error) {
         console.log(error)
