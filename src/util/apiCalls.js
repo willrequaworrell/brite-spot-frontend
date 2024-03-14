@@ -45,7 +45,7 @@ export const fetchUserDetails = async (userId) => {
 
 export const fetchAllUserEntries = async (userId) => {
     try {
-        const response = await axios.get(`http://${import.meta.env.VITE_DOMAIN}:3000/user/${userId}/entries`, {headers: apiKeyHeader})
+        const response = await axios.get(`${host}/user/${userId}/entries`, {headers: apiKeyHeader})
         if (response.data.status === "none") {
             return null
         }
@@ -58,7 +58,7 @@ export const fetchAllUserEntries = async (userId) => {
 
 export const fetchMostRecentUserEntry = async (userId) => {
     try {
-        const response = await axios.get(`http://${import.meta.env.VITE_DOMAIN}:3000/user/${userId}/entries/today`, {headers: apiKeyHeader})
+        const response = await axios.get(`${host}/user/${userId}/entries/today`, {headers: apiKeyHeader})
         if (response.data.status === "none") {
             return null
         }
@@ -70,7 +70,7 @@ export const fetchMostRecentUserEntry = async (userId) => {
 
 export const fetchWordCloudData = async (userId) => {
     try {
-        const response = await axios.get(`http://${import.meta.env.VITE_DOMAIN}:3000/user/${userId}/entries/combined`, {headers: apiKeyHeader})
+        const response = await axios.get(`${host}/user/${userId}/entries/combined`, {headers: apiKeyHeader})
         return response.data.wordCountsArray
     }
     catch (e) {
@@ -80,7 +80,7 @@ export const fetchWordCloudData = async (userId) => {
 
 export const submitEntry = async (entryData) => {
     try {
-        const response = await axios.post(`http://${import.meta.env.VITE_DOMAIN}:3000/entry`, entryData, {headers: apiKeyHeader} )
+        const response = await axios.post(`${host}/entry`, entryData, {headers: apiKeyHeader} )
         return {status: "success", message: "Entry logged successfully"};
     } catch (e) {
         return {status: "error", errorData: e};
@@ -89,7 +89,7 @@ export const submitEntry = async (entryData) => {
 
 export const deleteEntry = async (entryId) => {
     try {
-        const response = await axios.delete(`http://${import.meta.env.VITE_DOMAIN}:3000/entry/${entryId}`, {headers: apiKeyHeader});
+        const response = await axios.delete(`${host}/entry/${entryId}`, {headers: apiKeyHeader});
         console.log(response);
         return {status: "success", message: "Entry deleted successfully"};
     } catch (e) {
