@@ -1,7 +1,7 @@
 import axios from "axios"
 import { setTokenCookie } from "./cookieHelper"
 
-const apiKeyHeader = {"x-api-key": import.meta.env.VITE_API_KEY}
+const apiKeyHeader = {"x-api-key": import.meta.env.VITE_API_KEY.replace(/"/g, '')}
 const host = import.meta.env.VITE_DOMAIN.replace(/"/g, '')
 // test
 export const createUser = async (userData) => {
