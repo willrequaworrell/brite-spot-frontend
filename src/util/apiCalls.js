@@ -3,7 +3,7 @@ import { setTokenCookie } from "./cookieHelper"
 
 const apiKeyHeader = {"x-api-key": import.meta.env.VITE_API_KEY.replace(/"/g, '')}
 const host = import.meta.env.VITE_DOMAIN.replace(/"/g, '') // "https://britespotapi.w-r-w.com"
-// test
+
 export const createUser = async (userData) => {
     try {
         console.log("submitting", userData)
