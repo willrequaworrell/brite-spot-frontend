@@ -10,6 +10,7 @@ import Spinner from "./Spinner"
 import { CSVLink } from "react-csv"
 import { FaFileExport } from "react-icons/fa6";
 import { RiArrowUpDownFill } from "react-icons/ri";
+import UserEntriesSkeleton from "./UserEntriesSkeleton";
 
   
 const csvHeaders = [
@@ -72,6 +73,7 @@ const AllUserEntries = () => {
 
                         </div>
                     }
+                    {/* <UserEntriesSkeleton/> */}
                     {userEntries ? (
                         userEntries.map(entry => (
                             <EntryCard setUserEntries={setUserEntries} key={entry.id} id={entry.id} entry={entry}/>
