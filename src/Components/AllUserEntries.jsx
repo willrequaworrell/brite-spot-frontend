@@ -73,14 +73,15 @@ const AllUserEntries = () => {
 
                         </div>
                     }
-                    {/* <UserEntriesSkeleton/> */}
+                    
                     {userEntries ? (
                         userEntries.map(entry => (
                             <EntryCard setUserEntries={setUserEntries} key={entry.id} id={entry.id} entry={entry}/>
                         ))) : (
                             hasEntries ? (
-                                <div className="mt-24">
-                                    <Spinner size={"large"} />
+                                <div className="flex-col w-full items-center mt-12 ">
+                                    {/* <Spinner size={"large"} /> */}
+                                    <UserEntriesSkeleton count={8}/>
                                 </div>
 
                             ) : (
