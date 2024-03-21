@@ -10,7 +10,7 @@ const CustomButton = ({text, onClick}) => {
                     className="flex justify-center w-full bg-white rounded-lg shadow-lg hover:bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500"
                     onClick={onClick}  
                 >
-                    <p className="text-sm sm:text-xl">{text}</p>
+                    <p className="text-sm sm:text-xl text-gray-700">{text}</p>
                 </div>
             </div>
         </>

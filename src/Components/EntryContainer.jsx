@@ -43,7 +43,7 @@ const EntryContainer = ({setHasPostedToday, setHasEntries}) => {
     <div className="w-full sm:w-3/4 md:w-[60%] lg:w-[50%] justify-center mx-10 mt-32 md:my-32 md:mx-16 rounded-xl bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 p-[2px] shadow-xl">
         <div className="h-full w-full rounded-xl bg-white p-4">
             <div className="m-2">
-                <h2 className="text-md sm:text-2xl">{`What's one bright spot from today?`}</h2>
+                <h2 className="text-md sm:text-2xl text-gray-700">{`What's one bright spot from today?`}</h2>
             </div>
             <div className="flex flex-col items-center ">
               <div className="flex w-full m-2 p-[2px] bg-gradient-to-r from-teal-500 via-yellow-500 to-pink-500 rounded-xl">
