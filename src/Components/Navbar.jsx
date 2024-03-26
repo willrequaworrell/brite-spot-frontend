@@ -30,8 +30,6 @@ const Navbar = () => {
   }
 
   
-//   console.log("activePage: ", activePage)
-//   console.log("useUser" , userObj)
   return (
     <> 
         <div className="md:hidden fixed z-10 flex justify-center w-full bg-gray-100">

@@ -8,7 +8,6 @@ import Spinner from "./Spinner";
 import AuthFormInput from "./AuthFormInput";
 
 const SignUpForm = ({setAuthModeToggle}) => {
-	// const navigate = useNavigate()
 	const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
 	const [error, setError] = useState(null)
 	const [success, setSuccess] = useState(false)

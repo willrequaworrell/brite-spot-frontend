@@ -1,4 +1,3 @@
-// UserContext.js
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useAuth } from './AuthContext';
 

@@ -52,7 +52,6 @@ const AllUserEntries = () => {
         handleFetchEntries()
     }, [currentUser])
 
-    // console.log(userEntries)
     return (
         <div className="h-screen w-full overflow-y-auto bg-gray-100">
             <Navbar/>

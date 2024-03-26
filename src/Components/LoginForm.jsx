@@ -23,14 +23,12 @@ const LoginForm = () => {
 	const onSubmit = async (credentials) => {
 		setLoading(true)
 		setShowError(false)
-		// console.log("login attempt")
 		reset({ 
 			email: "",   
             password: "",
         });
 		const response = await signInUser(credentials)
 		setLoading(false)
-		// console.log(response)
 		console.log("Login Status: ", response.status)
 		if (response.status === "success") {
 			login(response.userData)

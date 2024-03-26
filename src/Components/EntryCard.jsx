@@ -14,7 +14,6 @@ const EntryCard = ({entry, id, setUserEntries}) => {
         setDeleteLoading(true)
         try {
             const response = await deleteEntry(id)
-            // console.log(response)
             setUserEntries((prevEntries) => prevEntries.filter((entry) => entry.id !== id ))
         } catch (error) {
             console.log(error)

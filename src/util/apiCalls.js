@@ -2,7 +2,7 @@ import axios from "axios"
 import { setTokenCookie } from "./cookieHelper"
 
 const apiKeyHeader = {"x-api-key": import.meta.env.VITE_API_KEY.replace(/"/g, '')}
-const host = import.meta.env.VITE_DOMAIN.replace(/"/g, '') // "https://britespotapi.w-r-w.com"
+const host = import.meta.env.VITE_DOMAIN.replace(/"/g, '') 
 
 export const createUser = async (userData) => {
     try {
@@ -25,7 +25,6 @@ export const signInUser = async (credentials) => {
     try {
         console.log("signing in", editedCredentials)
         const response = await axios.post(`${host}/login`, editedCredentials , {headers: apiKeyHeader} )
-        // console.log(response) 
         setTokenCookie(response.data.jwt)
         return {status: "success", userData: response.data.jwt}
     } catch (e) {
