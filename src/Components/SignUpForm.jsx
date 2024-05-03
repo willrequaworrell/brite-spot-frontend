@@ -24,7 +24,6 @@ const SignUpForm = ({setAuthModeToggle}) => {
         });
 		const response = await createUser(data)
 		setLoading(false)
-		console.log("Sign Up Status: ", response.status)
 		if (response.errorData){
 			console.log(response.errorData)
 			setError(response.errorData.error)
@@ -34,7 +33,6 @@ const SignUpForm = ({setAuthModeToggle}) => {
 		}
 	}
 
-	console.log(watch("password"))
 	
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="flex-col items-center w-full">

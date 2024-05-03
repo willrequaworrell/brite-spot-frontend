@@ -29,7 +29,6 @@ const LoginForm = () => {
         });
 		const response = await signInUser(credentials)
 		setLoading(false)
-		console.log("Login Status: ", response.status)
 		if (response.status === "success") {
 			login(response.userData)
 			navigate("/")

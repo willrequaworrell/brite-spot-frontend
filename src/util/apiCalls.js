@@ -6,9 +6,7 @@ const host = import.meta.env.VITE_DOMAIN.replace(/"/g, '')
 
 export const createUser = async (userData) => {
     try {
-        console.log("submitting", userData)
         const response = await axios.post(`${host}/signup`, userData , {headers: apiKeyHeader} )
-        console.log(response)
         return {status: "success", userData: response}
     } catch (e) {
         return {status: "error", errorData: e.response.data}
@@ -16,14 +14,11 @@ export const createUser = async (userData) => {
 }
 
 export const signInUser = async (credentials) => {
-    console.log(host)
-    console.log(host.replace(/"/g, ''))
     const editedCredentials = {
         "email": credentials.email,
         "password": credentials.password
     }
     try {
-        console.log("signing in", editedCredentials)
         const response = await axios.post(`${host}/login`, editedCredentials , {headers: apiKeyHeader} )
         setTokenCookie(response.data.jwt)
         return {status: "success", userData: response.data.jwt}
@@ -87,8 +82,7 @@ export const submitEntry = async (entryData) => {
 
 export const deleteEntry = async (entryId) => {
     try {
-        const response = await axios.delete(`${host}/entry/${entryId}`, {headers: apiKeyHeader});
-        console.log(response);
+        await axios.delete(`${host}/entry/${entryId}`, {headers: apiKeyHeader});
         return {status: "success", message: "Entry deleted successfully"};
     } catch (e) {
         console.error(e);

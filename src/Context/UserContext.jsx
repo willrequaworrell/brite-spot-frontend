@@ -17,7 +17,6 @@ export const UserProvider = ({ children }) => {
         try {
           const response = await fetchUserDetails(currentUser)
           setUserDetails(response)
-          console.log("fetchWrapper", response)
         } catch (error) {
           console.log(error)
         }

@@ -11,11 +11,9 @@ const ProtectedRoute = () => {
 
     useEffect(() => {
         const tokenCookie = Cookies.get('jwt');
-        console.log("token: ", tokenCookie)
-        console.log("curr user: ", currentUser)
+        
     
         if (tokenCookie && !currentUser) {
-            console.log("testing!")
             login(tokenCookie);
         }
         setLoading(false)

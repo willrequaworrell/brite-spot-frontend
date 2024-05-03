@@ -14,7 +14,7 @@ function App() {
 
 	return (
 		<>
-			{currentUser ? console.log("there is a user!") : console.log("no user!")}
+			{/* {currentUser ? console.log("there is a user!") : console.log("no user!")} */}
 			<UserProvider>
 				<ActivePageProvider>
 					<Routes>
