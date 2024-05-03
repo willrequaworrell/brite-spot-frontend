@@ -1,8 +1,6 @@
-# React + Vite
+# Welcome to BriteSpot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Adopting a gratitude practice is one of the best things you can do for your mental health and wellbeing, but often it can be a daunting task. It's hard to know where to start, and it's hard to keep going, so the best way to start is small. 
 
-Currently, two official plugins are available:
+With **BriteSpot**, as long as you can remember a single bright (brite) moment from your day, you're well on your way to a more grateful life. Just log the memory in your account each day and **BriteSpot** will track your journey towards a more gratitude filled life. BriteSpot allows you to view and sort all of your past entries, export them to your computer and even visualize the content of your entries to find out what really makes you tick!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
