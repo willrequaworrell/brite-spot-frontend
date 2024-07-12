@@ -1,5 +1,13 @@
 # Welcome to BriteSpot
 
+**Live Site**
+
+Try it out here: https://britespot.vercel.app/
+
+Demo Credentials:
+Email: demo@gmail.com  
+Password: DemoPass1!
+
 **Description**
 
 Adopting a gratitude practice is one of the best things you can do for your mental health and wellbeing, but often it can be a daunting task. It's hard to know where to start, and it's hard to keep going, so the best way to start is small. 
