@@ -1,11 +1,12 @@
 # Welcome to BriteSpot
 
-**Live Site**
+**Try It!**
 
-Try it out here: https://britespot.vercel.app/
+Visit https://britespot.vercel.app/
 
-Demo Credentials:
-Email: demo@gmail.com  
+Demo Login:
+
+Email: demo@gmail.com 
 Password: DemoPass1!
 
 **Description**
