@@ -9,6 +9,10 @@ Demo Login:
 Email: demo@gmail.com 
 Password: DemoPass1!
 
+**View a demo here:**
+
+https://youtu.be/ZprbtriZI90
+
 **Description**
 
 Adopting a gratitude practice is one of the best things you can do for your mental health and wellbeing, but often it can be a daunting task. It's hard to know where to start, and it's hard to keep going, so the best way to start is small. 
@@ -21,7 +25,5 @@ BriteSpot's frontend is built in React, styled using Tailwind CSS and hosted on 
 
 Backend Repo: https://github.com/willrequaworrell/brite-spot-backend/
 
-**View a demo here:**
 
-https://youtu.be/ZprbtriZI90
 
